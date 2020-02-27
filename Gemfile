@@ -17,4 +17,3 @@ gem "tux"
 #   gem 'capybara'
 #   gem 'rack-test'
 #   gem 'database_cleaner'
-# end
