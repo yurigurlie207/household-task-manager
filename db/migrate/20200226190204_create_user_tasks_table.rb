@@ -4,5 +4,6 @@ class CreateUserTasksTable < ActiveRecord::Migration[6.0]
      t.integer :user_id
      t.integer :task_id
      t.integer :subtask_id
-  end
+   end
+ end
 end
