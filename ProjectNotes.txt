@@ -18,9 +18,6 @@ responsibility
 
 - Create sessions/password
 
-
-- work out how the layout of subtask and task should be set up (keep it as simple as possible)
-
 *********************** DATA MODEL RELATIONSHIPS *****************
 
 Users can have many tasks and subtasks
@@ -72,22 +69,39 @@ Subtask belongs to Task
 ----------------------------------------------------------------
 
 
- *************    TASK ATTRIBUTES ************************
+ *************    TASK FORM with ATTRIBUTES ************************
 
- !!!! same as subtask when there are no subtasks !!!!!!!!!
+radio button () no subtask
+  ** same as subtask attributes **
+
+radio button () has subtask(s)
+  Show Subtasks
+  Add Subtask
 
 
+SAVE
 
-***************** SUBTASK ATTRIBUTES **********************
 
-Title
-Priority
-Deadline
-Duration
-Estimated Time to Complete
+***************** SUBTASK Form with ATTRIBUTES **********************
+
+Task Title [prepopulated with task title]
+Title [selection]
+Priority [high, medium, low] - nothing urgent, since families should just communicate when urgents
+Deadline [same day, future date]
+Duration [nothing more than 2 hours]
+
 
 Notes
 Feedback
+
+
+[]user
+[]user
+[]user
+
+Create User
+
+SAVE
 
 
 
@@ -102,5 +116,5 @@ Feedback
 - definitive household roles like parent/child/caregiver/service person with different admin/viewing privileges
 - have "owners" who are expected to become experts in certain tasks, so if delegated to someone else, they can go to that person for questions/help (right now it's just mommy for all =(((()
 - anything that can help break out care giving for baby/kids for caregivers
-
+- create household view, at this point assume only users at within the same household
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
