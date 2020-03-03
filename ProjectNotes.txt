@@ -70,7 +70,7 @@ Subtask belongs to Task
 
 
  *************    TASK FORM with ATTRIBUTES ************************
-
+Task Title [selection] or create
 radio button () no subtask
   ** same as subtask attributes **
 
@@ -85,7 +85,7 @@ SAVE
 ***************** SUBTASK Form with ATTRIBUTES **********************
 
 Task Title [prepopulated with task title]
-Title [selection]
+Title [selection] or create
 Priority [high, medium, low] - nothing urgent, since families should just communicate when urgents
 Deadline [same day, future date]
 Duration [nothing more than 2 hours]
