@@ -1,12 +1,27 @@
+PROJECT DESC/OBJECTIVES
+
+I think this could be helpful for projects where everyone's very busy,
+and you want to have everyone pitch in to run the household, especially teaching children chore responsibility, or just a family
+who might have a hard time keeping organized! (e.g. ADD FAMILIES!)
+It would be cool to see certain metrics on a dashboard that would make it fun for everyone involved.
+
+FAMILY GOALS:
+organization
+cooperation
+responsibility
+
+***********************
 - Create User Form
 - Create Task Form
 - Create Subtask Form
-
+***********************
 
 - Create sessions/password
 
 
 - work out how the layout of subtask and task should be set up (keep it as simple as possible)
+
+*********************** DATA MODEL RELATIONSHIPS *****************
 
 Users can have many tasks and subtasks
 Multiple users can be on one task and subtask
@@ -65,7 +80,14 @@ Subtask belongs to Task
 
 ***************** SUBTASK ATTRIBUTES **********************
 
+Title
+Priority
+Deadline
+Duration
+Estimated Time to Complete
 
+Notes
+Feedback
 
 
 
