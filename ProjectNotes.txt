@@ -1,0 +1,84 @@
+- Create User Form
+- Create Task Form
+- Create Subtask Form
+
+
+- Create sessions/password
+
+
+- work out how the layout of subtask and task should be set up (keep it as simple as possible)
+
+Users can have many tasks and subtasks
+Multiple users can be on one task and subtask
+Subtask belongs to Task
+
+(MAKE THESE PRELOADED IN DATABASE) --------------------------
+
+ - Groceries/Shopping
+
+ - Dishes
+   - load and turn on dishwasher
+   - unload dishwasher
+   - clean baby bottles/bowls
+
+ - Laundry
+ 	- wash cycle
+ 	- dry cycle
+ 	- put away clothes
+
+ - Mop
+
+- Cat
+	- feed
+	- litter
+
+ - Trash
+ 	- take out trash
+ 	- bring up trash and recycling
+
+(MAKE THESE FOR TESTING) --------------------------------------
+
+ - Vaccuum
+ 	- living area
+ 	- master bedroom
+ 	- baby room
+
+- Car
+	- refuel
+	- take for maintenance
+
+ - Yardwork
+
+  - Clean Bathroom
+ 	- clean sink counter
+ 	- clean shower
+ 	- clean toilet
+
+----------------------------------------------------------------
+
+
+ *************    TASK ATTRIBUTES ************************
+
+ !!!! same as subtask when there are no subtasks !!!!!!!!!
+
+
+
+***************** SUBTASK ATTRIBUTES **********************
+
+
+
+
+
+|||||||||||||||||||||||||||||||||||||||||Nice to Have List (Which means I don't have to do them now): |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+- be able to upload images
+- be able to build continuous subtasks to subtasks
+- have reoccuring tasks tied to a calendar
+- push and pull notifications
+- rewards system (medals, etc)
+- household tasks delegated to outside help, budget tracker
+- definitive household roles like parent/child/caregiver/service person with different admin/viewing privileges
+- have "owners" who are expected to become experts in certain tasks, so if delegated to someone else, they can go to that person for questions/help (right now it's just mommy for all =(((()
+- anything that can help break out care giving for baby/kids for caregivers
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
