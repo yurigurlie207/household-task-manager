@@ -1,5 +1,5 @@
 
-High Level Order of Build (in rough order of priority):
+High Level Order of Build (in rough order of priority): ---------------------------------------------------------------------------
 
 - make sure the basic relationship structure of models work (user, task, subtask)
 - seed table for testing of database, and eventually views
@@ -21,7 +21,7 @@ What I have Complete:
 - set up the migrations
 
 
-PROJECT DESC/OBJECTIVES
+PROJECT DESC/OBJECTIVES ------------------------------------------------------------------------------------------------------------
 
 I think this could be helpful for households where everyone's very busy,
 and you want to have everyone pitch in to run the household, especially teaching children chore responsibility, or just a family
@@ -35,7 +35,7 @@ responsibility
 
 
 
-*********  BUILD OUT ******************************
+*********  BUILD OUT (structure of basic pages layout)******************************
 
 For the purposes/scope of this project:
 *all users can see all tasks*
