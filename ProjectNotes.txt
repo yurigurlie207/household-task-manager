@@ -13,7 +13,45 @@ responsibility
 
 
 *********  BUILD OUT ******************************
-*users can only see tasks they are assigned to* 
+
+For the purposes/scope of this project:
+*all users can see all tasks*
+*they can all have filter to see tasks by user at the task level*
+*everyone has ability to edit and reassign tasks and subtasks for now*
+
+
+Filters At Task Level:
+Filter Task: By Week
+Filter Task: Unfinished (lists all tasks that have outstanding subtasks, otherwise all tasks are listed)
+Filter Tasks by User (lists all tasks where user is assigned to a subtask within the task)
+
+
+Tasks:
+ -task
+ -task
+ -task
+
+[click into task:]
+ Single Task:
+  -task attributes
+  edit / delete
+
+  OR
+
+Filters At Subtask Level:
+By Week:
+Finished/Unfinished
+By User
+
+  -subtask
+  -subtask
+  -subtask
+
+[click into subtask:]
+  Single subask:
+   -task attributes
+   edit / delete
+
 
 Functionality
 - Create sessions/password login validations
@@ -26,8 +64,10 @@ Views
 
 - Create Task Form
 - Create Task Page/index (Can see all tasks (maybe lists how many subtasks))
+- Can see
 
 - Create Subtask Form
+- Create subtask view. Can click back into the main task
 
 **************************************************
 
