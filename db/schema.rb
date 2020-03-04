@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
 
   create_table "subtasks", force: :cascade do |t|
     t.string "subtaskname"
-    t.string "location"
     t.integer "estimated_duration"
     t.integer "actual_duration"
     t.date "deadline"
@@ -26,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "taskname"
-    t.string "location"
     t.integer "estimated_duration"
     t.integer "actual_duration"
     t.date "deadline"
