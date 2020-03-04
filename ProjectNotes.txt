@@ -1,3 +1,26 @@
+
+High Level Order of Build (in rough order of priority):
+
+- make sure the basic relationship structure of models work (user, task, subtask)
+- seed table for testing of database, and eventually views
+- Build out the basic views structure (be able to go between all the pages)
+- Build out full forms (make editable and deletable)
+- put in the filters needed for the task/subtask views
+
+- Give each user a profile page only they can edit
+(for now this item is the only thing that distinguises the different users
+in the future, this can be used to define user roles and admin rights between parent/child
+scope too big for sinatra project, i think, we shall see)
+
+- Build a simple/presentable layout
+
+
+What I have Complete:
+- Setting up the environment
+- setting up the initial tables/models (need testing)
+- set up the migrations
+
+
 PROJECT DESC/OBJECTIVES
 
 I think this could be helpful for households where everyone's very busy,
@@ -34,7 +57,7 @@ Tasks:
 [click into task:]
  Single Task:
   -task attributes
-  edit / delete
+  edit / delete (can't delete if there are subtasks)
 
   OR
 
