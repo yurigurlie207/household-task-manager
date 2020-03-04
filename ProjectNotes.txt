@@ -12,16 +12,24 @@ responsibility
 
 
 
-*********  BUILD OUT **************
+*********  BUILD OUT ******************************
+*users can only see tasks they are assigned to* 
+
 Functionality
 - Create sessions/password login validations
 
 Views
-- Create User Form
+- Home Page
+- Login Page
+- Create User Form (Signup Page)
+- Create User Page (can see all tasks and subtasks)
+
 - Create Task Form
+- Create Task Page/index (Can see all tasks (maybe lists how many subtasks))
+
 - Create Subtask Form
 
-***********************
+**************************************************
 
 
 
