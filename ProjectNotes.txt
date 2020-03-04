@@ -111,7 +111,6 @@ Subtask belongs to Task
  - Dishes
    - load and turn on dishwasher
    - unload dishwasher
-   - clean baby bottles/bowls
 
  - Laundry
  	- wash cycle
