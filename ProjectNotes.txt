@@ -151,7 +151,7 @@ UserTask: belongs to subtask, belongs to user
 
  - Yardwork
 
-  - Clean Bathroom
+-Bathroom
  	- clean sink counter
  	- clean shower
  	- clean toilet
