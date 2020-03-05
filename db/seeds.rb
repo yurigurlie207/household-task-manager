@@ -1,11 +1,17 @@
-user1 = User.create(username: "Mom")
-user2 = User.create(username: "Dad")
-user3 = User.create(username: "Son")
-user4 = User.create(username: "Daughter")
+#seed data for testing
+#use commented out data to test app
 
-task1 = Task.create(title: "Dishes")
-task2 = Task.create(title: "Shopping")
-task3 = Task.create(title: "Laundry")
+#CREATE USERS
+user1 = User.create(username: "Mom")
+#User.create(username: "Dad")
+user2 = User.create(username: "Son")
+user3 = User.create(username: "Daughter")
+
+
+#CREATE TASKS and SUBTASKS
+Task.create(title: "Dishes")
+Task.create(title: "Shopping")
+Task.create(title: "Laundry")
 
 
 subtask1_1 = Subtask.create(title: "Load Dishwasher")
