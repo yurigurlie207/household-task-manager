@@ -57,6 +57,21 @@ usertask9 = UserTask.create()
 usertask10 = UserTask.create()
 
 
-#Mom and Son are assigned to laundry duty with mom loading and putting in dryer, and son putting it away
-usertask1.user = user1
-usertask1.subtask =
+#Mom and Son are assigned to laundry duty with mom loading and putting in dryer,
+#and son and daughter putting it away
+#4 separate rows in the user task table
+usertask1.user = mom
+usertask1.subtask = load_laundry
+usertask2.user = mom
+usertask2.subtask = load_dryer
+usertask3.user = son
+usertask3.subtask = put_away_laundry
+usertask4.user = daughter
+usertask4.subtask = put_away_laundry
+
+
+#Dad and son assigned mop
+usertask5.user = dad
+usertask5.task = mop
+usertask6.user = son
+usertask6.subtask = mop
