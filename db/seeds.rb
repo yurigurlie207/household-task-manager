@@ -2,52 +2,61 @@
 #use commented out data to test app
 
 #CREATE USERS
-user1 = User.create(username: "Mom")
-#User.create(username: "Dad")
-user2 = User.create(username: "Son")
-user3 = User.create(username: "Daughter")
+mom = User.create(username: "Mom")
+dad = User.create(username: "Dad")
+son = User.create(username: "Son")
+daughter = User.create(username: "Daughter")
 
 
 #CREATE TASKS and SUBTASKS
-task1 = Task.create(title: "Dishes")
-subtask1_1 = Subtask.create(title: "Load Dishwasher")
-subtask1_2 = Subtask.create(title: "Unload Dishwasher")
-subtask1_1.task = task1
-subtask1_2.task = task1
+dishes = Task.create(title: "Dishes")
+load_dishes = Subtask.create(title: "Load Dishwasher")
+unload_dishes = Subtask.create(title: "Unload Dishwasher")
+load_dishes.task = dishes
+unload_dishes.task = dishes
 
 
-task2 = Task.create(title: "Shopping")
-subtask2_1 = Subtask.create(title: "Shopping")
-subtask2_1.task = task2
+shopping = Task.create(title: "Shopping")
+shopping_sub = Subtask.create(title: "Shopping")
+shopping_sub.task = shopping
 
-task3 = Task.create(title: "Laundry")
-subtask3_1 = Subtask.create(title: "Load washer")
-subtask3_2 = Subtask.create(title: "Load dryer")
-subtask3_3 = Subtask.create(title: "Put away laundry")
-subtask3_1.task = task3
-subtask3_2.task = task3
-subtask3_3.task = task3
+laundry = Task.create(title: "Laundry")
+load_laundry = Subtask.create(title: "Load washer")
+load_dryer = Subtask.create(title: "Load dryer")
+put_away_laundry = Subtask.create(title: "Put away laundry")
+load_laundry.task = laundry
+load_dryer.task = laundry
+put_away_laundry.task = laundry
 
-task4 = Task.create(title: "Cat Care")
-subtask4_1 = Subtask.create(title: "Feed Cat")
-subtask4_2 = Subtask.create(title: "Clean Litter Box")
-subtask4_1.task = task4
-subtask4_2.task = task4
+cat = Task.create(title: "Cat Care")
+feed_cat = Subtask.create(title: "Feed Cat")
+clean_litter = Subtask.create(title: "Clean Litter Box")
+feed_cat.task = cat
+clean_litter.task = cat
 
-task5 = Task.create(title: "Mop")
-subtask5_1 = Subtask.create(title: "Mop")
-subtask5_1.task = task5
+mop = Task.create(title: "Mop")
+mop_sub = Subtask.create(title: "Mop")
+mop_sub.task = mop
 
-task6 = Task.create(title: "Trash")
-subtask6_1 = Subtask.create(title: "Take Out Trash")
-subtask6_2 = Subtask.create(title: "Weekly Trash Day")
-subtask6_1.task = task6
-subtask6_2.task = task6
-
-
+trash = Task.create(title: "Trash")
+take_out_trash = Subtask.create(title: "Take Out Trash")
+trash_day = Subtask.create(title: "Weekly Trash Day")
+take_out_trash.task = trash
+trash_day.task = trash
 
 
 #CREATE USER SUBTASK ASSIGNMENTS
 usertask1 = UserTask.create()
 usertask2 = UserTask.create()
-usertask3 = UserTask.create()
+usertask4 = UserTask.create()
+usertask5 = UserTask.create()
+usertask6 = UserTask.create()
+usertask7 = UserTask.create()
+usertask8 = UserTask.create()
+usertask9 = UserTask.create()
+usertask10 = UserTask.create()
+
+
+#Mom and Son are assigned to laundry duty with mom loading and putting in dryer, and son putting it away
+usertask1.user = user1
+usertask1.subtask =
