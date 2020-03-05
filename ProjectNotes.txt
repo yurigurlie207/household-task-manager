@@ -97,6 +97,8 @@ Views
 
 
 *********************** DATA MODEL RELATIONSHIPS *****************
+This model structure is like Artist/Song/Genre pattern:
+Where User, Task, Subtask is to Genre, Artist and Song
 
 Users can have many tasks through subtasks, since subtask belongs to task
 subtask has many users through task/user table
@@ -104,6 +106,12 @@ task has many users through task/user table
 
 Decided that if there is only one task, but no subtasks,
 I will just force the database to save the task info as a subtask, but the user can just fill it out as one task.
+
+So:
+Task: has many subtasks,, has many users through subtasks
+Subtask: belongs to task, has many user tasks, has many users through user task
+Users: has many user task, has many subtasks through user task, has many tasks through subtasks
+UserTask: belongs to subtask, belongs to user
 
 (MAKE THESE PRELOADED IN DATABASE) --------------------------
 
