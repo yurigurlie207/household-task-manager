@@ -98,9 +98,12 @@ Views
 
 *********************** DATA MODEL RELATIONSHIPS *****************
 
-Users can have many tasks and subtasks
-Multiple users can be on one task and subtask
-Subtask belongs to Task
+Users can have many tasks through subtasks, since subtask belongs to task
+subtask has many users through task/user table
+task has many users through task/user table
+
+Decided that if there is only one task, but no subtasks,
+I will just force the database to save the task info as a subtask, but the user can just fill it out as one task.
 
 (MAKE THESE PRELOADED IN DATABASE) --------------------------
 
