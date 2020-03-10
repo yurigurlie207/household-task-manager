@@ -73,6 +73,6 @@ usertask4.subtask = put_away_laundry
 
 #Dad and son assigned mop
 usertask5.user = dad
-usertask5.subtask = mop
+usertask5.subtask = mop_sub
 usertask6.user = son
-usertask6.subtask = mop
+usertask6.subtask = mop_sub
