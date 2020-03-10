@@ -48,13 +48,14 @@ trash_day.task = trash
 #CREATE USER SUBTASK ASSIGNMENTS
 usertask1 = UserTask.create()
 usertask2 = UserTask.create()
+usertask3 = UserTask.create()
 usertask4 = UserTask.create()
 usertask5 = UserTask.create()
 usertask6 = UserTask.create()
-usertask7 = UserTask.create()
-usertask8 = UserTask.create()
-usertask9 = UserTask.create()
-usertask10 = UserTask.create()
+# usertask7 = UserTask.create()
+# usertask8 = UserTask.create()
+# usertask9 = UserTask.create()
+# usertask10 = UserTask.create()
 
 
 #Mom and Son are assigned to laundry duty with mom loading and putting in dryer,
