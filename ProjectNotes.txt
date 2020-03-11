@@ -2,9 +2,10 @@
 High Level Order of Build (in rough order of priority): ---------------------------------------------------------------------------
 
 
-
-- Build out the basic views structure (be able to go between all the pages) based on seed data
 - Build out full forms (make editable and deletable)
+  -task/subtask
+  -user
+- Build out the basic views structure (be able to go between all the pages) based on seed data
 - put in the filters needed for the task/subtask views
 
 - Give each user a profile page only they can edit
