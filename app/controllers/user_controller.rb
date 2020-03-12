@@ -1,3 +1,3 @@
 
-class UserController < Sinatra::Base
+class UserController < ApplicationController
 end

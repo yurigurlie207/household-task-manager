@@ -1,13 +1,13 @@
 
-class TaskController < Sinatra::Base
+class TaskController < ApplicationController
 
   get '/tasks' do
     @tasks = Task.all
-    erb :'/tasks/index'
+    erb :'tasks/index'
   end
 
   get '/tasks/new' do
-    erb :'/tasks/new'
+    erb :'tasks/new'
   end
 
   post '/tasks' do
@@ -15,9 +15,9 @@ class TaskController < Sinatra::Base
     #A LOT OF REFACTORING NEEDS TO HAPPEN HERE I'M SURE ----------------------------------------------
 
     # if logged_in?
-        if params[:title] == ""
-          redirect to "/tasks/new"
-        else
+        # if params[:tasktitle] == ""
+        #   redirect to "/tasks/new"
+        # else
           #can add in user as base object later, for now reference everything from task level
 
 
@@ -27,9 +27,8 @@ class TaskController < Sinatra::Base
           @subtask.task = @task
 
           #if there are multiple subtasks, give a diff set of options here
-          @task = Task.new(title: params[:tasktitle])
-
-          @task.subtasks.build(title: params[:tasktitle][:title])
+          # @task = Task.new(title: params[:tasktitle])
+          # @task.subtasks.build(title: params[:tasktitle][:title])
 
           if @task.save
             # flash[:message] = "Successfully created task."
@@ -37,9 +36,10 @@ class TaskController < Sinatra::Base
           else
             redirect to "/tasks/new"
           end
-        end
+
       # else
       #   redirect to '/login'
       # end
-
   end
+
+end #end of class
