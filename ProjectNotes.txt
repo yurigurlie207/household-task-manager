@@ -223,3 +223,4 @@ https://guides.rubyonrails.org/active_record_querying.html
 
 <!-- active record .build method -->
 https://stackoverflow.com/questions/783584/ruby-on-rails-how-do-i-use-the-active-record-build-method-in-a-belongs-to-rel
+https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html

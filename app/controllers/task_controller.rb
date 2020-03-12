@@ -22,14 +22,14 @@ class TaskController < Sinatra::Base
 
 
           #if there is a checkbox for no subtasks, make subtask the same as task
-          @task = Task.create(title: params[:title])
-          @task.save
-          @subtask = SubTask.create(title: params[:title])
+          @task = Task.create(title: params[:tasktitle])
+          @subtask = SubTask.create(title: params[:tasktitle])
           @subtask.task = @task
 
-          #if there are subtasks, give a diff set of options here
-          @task = Task.new
-          @task.build(title: params[:title])
+          #if there are multiple subtasks, give a diff set of options here
+          @task = Task.new(title: params[:tasktitle])
+
+          @task.subtasks.build(title: params[:tasktitle][:title])
 
           if @task.save
             # flash[:message] = "Successfully created task."
