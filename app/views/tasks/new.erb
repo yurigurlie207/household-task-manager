@@ -2,9 +2,12 @@
 
 <form action="/tasks" method="POST">
 
-  <label for="task_title">Task Title</label>
-  <input type="text" name="task[title]" id="task_title"> </br>
+<p>
+  <label for="task_title">Task Title: </label>
+  <input type="text" name="task[title]" id="task_title">
+</p>
 
+<p>
   <label for="est_time">Estimate Time to Complete:</label>
   <select id="est_time" name="task[estimated_duration]">
     <option value="five">5 minutes</option>
@@ -14,26 +17,34 @@
     <option value="forty">40 minutes</option>
     <option value="hour">60 minutes</option>
     <option value="ninty">90 minutes</option>
-    <option value="twohour">120 minutes</option>
+    <option value="twohour">120 minutes</option></select>
+  </p>
 
   <!-- no need for actual time for completely on new task form -->
 
+  <p>
     <label for="priority">Priority:</label>
     <select id="priority" name="task[priority]">
-      <option value="Urgent">Urgent</option>
-      <option value="Important">Important</option>
-      <option value="Moderate">Moderate</option>
       <option value="Low">Low</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Important">Important</option>
+      <option value="Urgent">Urgent</option></select>
+  </p>
 
+  <p>
     <label for="deadline">Must Be Done By:</label>
-    <input type="date" id="deadline" name="task[deadline]"> <br>
+    <input type="date" id="deadline" name="task[deadline]">
+  </p>
+
+  <p>
 
     <label for="task_notes">Notes:</label>
-    <input type="text" name="task[notes]" id="task_notes"> </br>
+    <input type="text" name="task[notes]" id="task_notes">
+  </p>
 
   <!-- no need for feedback on new task form -->
 
-  <input type="checkbox" value="There are no subtasks.">
+  <p><input id="no_subtask" type="checkbox"> <label for="no_subtask">There are no subtasks for this task.</label></p>
 
   <input type="submit" value="Create Task">
 </form>
