@@ -4,12 +4,12 @@
 
 <p>
   <label for="task_title">Task Title: </label>
-  <input type="text" name="task[title]" id="task_title">
+  <input type="text" name="task[title]" id="task_title" required>
 </p>
 
 <p>
   <label for="est_time">Estimate Time to Complete:</label>
-  <select id="est_time" name="task[estimated_duration]">
+  <select id="est_time" name="task[estimated_duration]" required>
     <option value="five">5 minutes</option>
     <option value="ten">10 minutes</option>
     <option value="twenty">20 minutes</option>
@@ -24,7 +24,7 @@
 
   <p>
     <label for="priority">Priority:</label>
-    <select id="priority" name="task[priority]">
+    <select id="priority" name="task[priority]" required>
       <option value="Low">Low</option>
       <option value="Moderate">Moderate</option>
       <option value="Important">Important</option>
