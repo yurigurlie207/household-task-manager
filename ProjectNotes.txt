@@ -212,3 +212,14 @@ SAVE
 - anything that can help break out care giving for baby/kids for caregivers
 - create household view, at this point assume only users at within the same household
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+References I Used:
+https://guides.rubyonrails.org/association_basics.html
+https://bundler.io/guides/using_bundler_in_applications.html#getting-started---installing-bundler-and-bundle-init
+https://flatironschool.com/blog/why-you-dont-need-has-and-belongs-to-many
+
+https://guides.rubyonrails.org/active_record_querying.html
+
+<!-- active record .build method -->
+https://stackoverflow.com/questions/783584/ruby-on-rails-how-do-i-use-the-active-record-build-method-in-a-belongs-to-rel
