@@ -1,0 +1,49 @@
+<h1>TASK NAME</h1>
+<h2>Create a New Subtask</h2>
+<form action="/subtasks" method="POST">
+
+<p>
+  <label for="subtask_title">Subtask Title: </label>
+  <input type="text" name="subtask[title]" id="subtask_title" required>
+</p>
+
+<p>
+  <label for="est_time">Estimate Time to Complete:</label>
+  <select id="est_time" name="task[estimated_duration]" required>
+    <option value="five">5 minutes</option>
+    <option value="ten">10 minutes</option>
+    <option value="twenty">20 minutes</option>
+    <option value="half">30 minutes</option>
+    <option value="forty">40 minutes</option>
+    <option value="hour">60 minutes</option>
+    <option value="ninty">90 minutes</option>
+    <option value="twohour">120 minutes</option></select>
+  </p>
+
+  <!-- no need for actual time for completely on new task form -->
+
+  <p>
+    <label for="priority">Priority:</label>
+    <select id="priority" name="subtask[priority]" required>
+      <option value="Low">Low</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Important">Important</option>
+      <option value="Urgent">Urgent</option></select>
+  </p>
+
+  <p>
+    <label for="deadline">Must Be Done By:</label>
+    <input type="date" id="deadline" name="subtask[deadline]">
+  </p>
+
+  <p>
+
+    <label for="subtask_notes">Notes:</label>
+    <input type="text" name="subtask[notes]" id="subtask_notes">
+  </p>
+
+  <!-- no need for feedback on new task form -->
+
+
+  <input type="Submit" value="Create Subtask">
+</form>
