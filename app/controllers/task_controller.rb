@@ -10,6 +10,11 @@ class TaskController < ApplicationController
     erb :'tasks/new'
   end
 
+  get '/tasks/:id' do
+     @task = Task.find_by_id(params[:id])
+     erb :'tasks/show'
+ end
+
   post '/tasks' do
 
     #A LOT OF REFACTORING NEEDS TO HAPPEN HERE I'M SURE ----------------------------------------------
