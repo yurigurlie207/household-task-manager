@@ -1,3 +1,11 @@
+<h1> <%= @task.title %> </h1>
+<h3>artist</h3>
+<a href="/artists/<%= @song.artist.slug %>"> <%= @song.artist.name %> </a>
+<h3>genre</h3>
+<% @usertask.all.each do |genre| %>
+  <a href="/genres/<%= genre.slug %>"><%= genre.name %> </a>
+<% end %>
+
 #This Shows A Single Task
 
 

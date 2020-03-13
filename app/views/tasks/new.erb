@@ -43,10 +43,17 @@
   </p>
 
   <p>
-
     <label for="task_notes">General Notes:</label><br>
     <textarea  name="task[notes]" id="task_notes" cols="80" rows="10"></textarea>
   </p>
+
+<p>
+  <h3>Assign Task to the Following: </h3>
+  <% Users.all.each do |user| %>
+    <input type="checkbox" name="user[user_ids][]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.name %></input><br>
+  <% end %>
+</p>
+  
 
   <!-- no need for feedback on new task form -->
 

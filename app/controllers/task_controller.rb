@@ -12,6 +12,8 @@ class TaskController < ApplicationController
 
   get '/tasks/:id' do
      @task = Task.find_by_id(params[:id])
+      # taskid = params[:id].to_s
+    #  @subtasks = Subtask.where("task_id = " + taskid)
      erb :'tasks/show'
  end
 
