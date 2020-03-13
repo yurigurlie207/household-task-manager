@@ -6,13 +6,11 @@
   <label for="task_title">Task Title: </label>
   <input type="text" name="task[title]" list="task_title" required>
   <datalist id="task_title">
-    <option>Volvo</option>
-    <option>Saab</option>
-    <option>Mercedes</option>
-    <option>Audi</option>
+    <% Task.all.each do |task| %>
+    <option><%= task.title %></option>
+      <% end %>
   </datalist>
 </p>
-
 
 
 <p>
