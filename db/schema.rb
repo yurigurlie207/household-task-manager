@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
   create_table "user_tasks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "subtask_id"
+    t.datetime "time_created"
   end
 
   create_table "users", force: :cascade do |t|
