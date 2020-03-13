@@ -4,8 +4,16 @@
 
 <p>
   <label for="task_title">Task Title: </label>
-  <input type="text" name="task[title]" id="task_title" required>
+  <input type="text" name="task[title]" list="task_title" required>
+  <datalist id="task_title">
+    <option>Volvo</option>
+    <option>Saab</option>
+    <option>Mercedes</option>
+    <option>Audi</option>
+  </datalist>
 </p>
+
+
 
 <p>
   <label for="est_time">Estimate Time to Complete:</label>
@@ -39,7 +47,7 @@
   <p>
 
     <label for="task_notes">Notes:</label>
-    <input type="text" name="task[notes]" id="task_notes">
+    <input type="text" name="task[notes]" id="task_notes" size="100">
   </p>
 
   <!-- no need for feedback on new task form -->
