@@ -15,10 +15,10 @@ class TaskController < ApplicationController
 
     if @task.no_subtask == true
       @subtask = Subtask.where(task_id: params[:id]).first
-    #  @subtask.users.each do |user|
-    #     puts "HI"
-    #     puts user.username
-    #   end
+      # @subtask.users.each do |user|
+      #   puts "USER"
+      #   puts user.username
+      end
     else
     end
 
@@ -42,10 +42,6 @@ class TaskController < ApplicationController
             @task = Task.create(params['task'])
             @subtask = Subtask.create(params['task'])
             @subtask.task = @task
-            puts "HMM"
-            puts @subtask.task_id
-            puts @subtask.task.id
-            puts "THE END"
             @subtask.user_ids = params[:user_ids]
             # puts "HELLO"
             # puts @subtask.user_ids
