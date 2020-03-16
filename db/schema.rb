@@ -26,11 +26,9 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.integer "estimated_duration"
-    t.integer "actual_duration"
     t.date "deadline"
     t.string "priority"
     t.text "notes"
-    t.text "feedback"
   end
 
   create_table "user_tasks", force: :cascade do |t|
