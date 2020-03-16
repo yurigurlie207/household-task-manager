@@ -1,11 +1,19 @@
-<h1> <%= @task.title %> </h1>
+<h1>Task Name:  </h1>
+<%= @task.title %>
 
-<% if @task.no_subtask == 1 %>
-   <h3> This task has no subtasks </h3>
-   <h4> Estimated Duration: </h4><%= @task.estimated_duration %>
-   <h4> Deadline: </h4> <%= @task.priority %>
-   <h4> Notes: </h4> <%= @task.notes %>
 
+<% if @task.no_subtask == true %>
+<div>
+  <h1>Task Description: </h1>
+   <p> This task has <b>no subtasks</b> </p>
+   <p> Estimated Duration: <%= @task.estimated_duration %></p>
+   <p> Deadline: <%= @task.priority %></p>
+   <p> Notes: <%= @task.notes %></p>
+   <p>The following user(s) is/are assigned to this task:
+     <ul>
+  
+     </ul>
+</div>
 
 <% else %>
   <h3>Add or Delete Subtasks here: </h3>

@@ -11,7 +11,17 @@ class TaskController < ApplicationController
   end
 
   get '/tasks/:id' do
-     @task = Task.find_by_id(params[:id])
+    @task = Task.find_by_id(params[:id])
+
+    if @task.no_subtask == true
+      @subtask = Subtask.where(task_id: params[:id]).first
+    #  @subtask.users.each do |user|
+    #     puts "HI"
+    #     puts user.username
+    #   end
+    else
+    end
+
       # taskid = params[:id].to_s
     #  @subtasks = Subtask.where("task_id = " + taskid)
      erb :'tasks/show'
@@ -32,7 +42,13 @@ class TaskController < ApplicationController
             @task = Task.create(params['task'])
             @subtask = Subtask.create(params['task'])
             @subtask.task = @task
+            puts "HMM"
+            puts @subtask.task_id
+            puts @subtask.task.id
+            puts "THE END"
             @subtask.user_ids = params[:user_ids]
+            # puts "HELLO"
+            # puts @subtask.user_ids
             if @subtask.save then saved = 1 end
 
           else
