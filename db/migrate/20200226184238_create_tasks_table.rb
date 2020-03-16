@@ -3,11 +3,9 @@ class CreateTasksTable < ActiveRecord::Migration[6.0]
     create_table :tasks do |t|
       t.string :title
       t.integer :estimated_duration
-      t.integer :actual_duration
       t.date :deadline
       t.string :priority
       t.text :notes
-      t.text :feedback
     end
   end
 end
