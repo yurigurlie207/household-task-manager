@@ -29,23 +29,23 @@ class TaskController < ApplicationController
 
           if params[:has_subtask] == 1
             #if there is a checkbox for no subtasks, make subtask the same as task
-            @task = Task.create(title: params[:tasktitle], estimated_duration: params[:est_dur], priority: params[:priority],deadline: params[:deadline], notes: params[:notes])
-            @subtask = SubTask.create(title: params[:tasktitle])
+            @task = Task.create(params['task'])
+            @subtask = SubTask.create(params['task'])
             @subtask.task = @task
             @subtask.user_ids = params[:user_ids]
-            @subtask.save
-
           else
             #if there are multiple subtasks, give a diff set of options here
             # @task = Task.new(title: params[:tasktitle])
             # @task.subtasks.build(title: params[:tasktitle][:title])
 
-              if @task.save
-                # flash[:message] = "Successfully created task."
-                redirect to "/tasks/#{@task.id}"
-              else
-                redirect to "/tasks/new"
-              end
+
+          end
+
+          if @subtask.save
+            # flash[:message] = "Successfully created task."
+            redirect to "/tasks/#{@task.id}"
+          else
+            redirect to "/tasks/new"
           end
 
       # else
