@@ -26,8 +26,8 @@ class TaskController < ApplicationController
         #   redirect to "/tasks/new"
         # else
           #can add in user as base object later, for now reference everything from task level
-
-          if params[:has_subtask] == 1
+          if params[:task][:no_subtask] == 1
+          
             #if there is a checkbox for no subtasks, make subtask the same as task
             @task = Task.create(params['task'])
             @subtask = SubTask.create(params['task'])
