@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
     t.string "priority"
     t.text "notes"
     t.text "feedback"
+    t.boolean "no_subtask"
     t.integer "task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.integer "estimated_duration"
+    t.string "estimated_duration"
     t.date "deadline"
     t.string "priority"
     t.text "notes"

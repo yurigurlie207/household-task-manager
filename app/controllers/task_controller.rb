@@ -26,13 +26,15 @@ class TaskController < ApplicationController
         #   redirect to "/tasks/new"
         # else
           #can add in user as base object later, for now reference everything from task level
-          if params[:task][:no_subtask] == 1
-          
+          saved = 0
+          if params[:task][:no_subtask] == '1'
             #if there is a checkbox for no subtasks, make subtask the same as task
             @task = Task.create(params['task'])
-            @subtask = SubTask.create(params['task'])
+            @subtask = Subtask.create(params['task'])
             @subtask.task = @task
             @subtask.user_ids = params[:user_ids]
+            if @subtask.save then saved = 1 end
+
           else
             #if there are multiple subtasks, give a diff set of options here
             # @task = Task.new(title: params[:tasktitle])
@@ -41,7 +43,7 @@ class TaskController < ApplicationController
 
           end
 
-          if @subtask.save
+          if saved == 1
             # flash[:message] = "Successfully created task."
             redirect to "/tasks/#{@task.id}"
           else

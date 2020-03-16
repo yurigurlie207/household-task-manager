@@ -8,6 +8,7 @@ class CreateSubtasksTable < ActiveRecord::Migration[6.0]
       t.string :priority
       t.text :notes
       t.text :feedback
+      t.boolean :no_subtask
       t.integer :task_id
     end
   end
