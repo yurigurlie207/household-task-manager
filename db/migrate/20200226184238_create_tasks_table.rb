@@ -6,6 +6,7 @@ class CreateTasksTable < ActiveRecord::Migration[6.0]
       t.date :deadline
       t.string :priority
       t.text :notes
+      t.boolean :no_subtask
     end
   end
 end

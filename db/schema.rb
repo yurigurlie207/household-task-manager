@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
     t.date "deadline"
     t.string "priority"
     t.text "notes"
+    t.boolean "no_subtask"
   end
 
   create_table "user_tasks", force: :cascade do |t|

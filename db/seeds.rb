@@ -43,6 +43,8 @@ clean_litter.task = cat
 clean_litter.save
 
 mop = Task.create(title: "Mop")
+mop.no_subtask = 1
+mop.save
 mop_sub = Subtask.create(title: "Mop")
 mop_sub.task = mop
 mop_sub.save
