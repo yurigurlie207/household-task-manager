@@ -14,11 +14,14 @@ load_dishes = Subtask.create(title: "Load Dishwasher")
 unload_dishes = Subtask.create(title: "Unload Dishwasher")
 load_dishes.task = dishes
 unload_dishes.task = dishes
+load_dishes.save
+unload_dishes.save
 
 
 shopping = Task.create(title: "Shopping")
 shopping_sub = Subtask.create(title: "Shopping")
 shopping_sub.task = shopping
+shopping_sub.save
 
 laundry = Task.create(title: "Laundry")
 load_laundry = Subtask.create(title: "Load washer")
@@ -27,52 +30,46 @@ put_away_laundry = Subtask.create(title: "Put away laundry")
 load_laundry.task = laundry
 load_dryer.task = laundry
 put_away_laundry.task = laundry
+put_away_laundry.save
+load_laundry.save
+load_dryer.save
 
 cat = Task.create(title: "Cat Care")
 feed_cat = Subtask.create(title: "Feed Cat")
 clean_litter = Subtask.create(title: "Clean Litter Box")
 feed_cat.task = cat
+feed_cat.save
 clean_litter.task = cat
+clean_litter.save
 
 mop = Task.create(title: "Mop")
 mop_sub = Subtask.create(title: "Mop")
 mop_sub.task = mop
+mop_sub.save
 
 trash = Task.create(title: "Trash")
 take_out_trash = Subtask.create(title: "Take Out Trash")
 trash_day = Subtask.create(title: "Weekly Trash Day")
 take_out_trash.task = trash
+take_out_trash.save
 trash_day.task = trash
+trash_day.save
 
 
-#CREATE USER SUBTASK ASSIGNMENTS
-usertask1 = UserTask.create()
-usertask2 = UserTask.create()
-usertask3 = UserTask.create()
-usertask4 = UserTask.create()
-usertask5 = UserTask.create()
-usertask6 = UserTask.create()
-# usertask7 = UserTask.create()
-# usertask8 = UserTask.create()
-# usertask9 = UserTask.create()
-# usertask10 = UserTask.create()
-
-
+#user_ids: 1:mom, 2:dad, 3:son, 4:daughter
 #Mom and Son are assigned to laundry duty with mom loading and putting in dryer,
 #and son and daughter putting it away
 #4 separate rows in the user task table
-usertask1.user = mom
-usertask1.subtask = load_laundry
-usertask2.user = mom
-usertask2.subtask = load_dryer
-usertask3.user = son
-usertask3.subtask = put_away_laundry
-usertask4.user = daughter
-usertask4.subtask = put_away_laundry
+load_laundry.user_ids = [1]
+load_laundry.save
+
+load_dryer.user_ids = [1]
+load_dryer.save
+
+put_away_laundry.user_ids = [3,4]
+put_away_laundry.save
 
 
 #Dad and son assigned mop
-usertask5.user = dad
-usertask5.subtask = mop_sub
-usertask6.user = son
-usertask6.subtask = mop_sub
+mop_sub.user_ids = [2,3]
+mop_sub.save
