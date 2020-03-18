@@ -1,7 +1,7 @@
 class SubtaskController < ApplicationController
 
-  get '/subtasks/new' do
-    erb :'subtasks/new'
+  get '/subtask/new' do
+    erb :'/tasks/subtasks/new'
   end
 
 end
