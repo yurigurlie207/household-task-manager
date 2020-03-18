@@ -20,9 +20,9 @@
 <% else %>
   <h3>Add or Delete Subtasks here: </h3>
   <% Subtask.where(task_id: @task.id).each do |subtask| %>
-    <a href = "/subtask/#{subtask.id}"><%= subtask.title %><br>
+    <a href = "/subtasks/#{subtask.id}"><%= subtask.title %><br>
    <% end %>
-  <a href="/subtask/new">Add Subtasks</a>
+  <a href="/subtasks/new">Add Subtasks</a>
 
 <% end %>
 <div>
