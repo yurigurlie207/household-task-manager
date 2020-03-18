@@ -20,9 +20,12 @@
 <% else %>
   <h3>Add or Delete Subtasks here: </h3>
   <% @subtasks.each do |subtask| %>
-    <a href = "tasks/#{@task.id}/subtasks/#{subtask.id}"><%= subtask.title %><br>
+    <a href = "subtasks/#{subtask.id}"><%= subtask.title %><br>
    <% end %>
-  <a href="tasks/#{@task.id}/subtasks/new">Add Subtasks</a>
+
+   <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %>
+
+
 
 <% end %>
 <div>
