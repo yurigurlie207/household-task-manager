@@ -42,16 +42,14 @@ class TaskController < ApplicationController
             @task = Task.create(params['task'])
             @subtask = Subtask.create(params['task'])
             @subtask.task = @task
-            @subtask.user_ids = params[:user_ids]
-            # puts "HELLO"
-            # puts @subtask.user_ids
+            @subtask.user_ids = params[:users]
+
             if @subtask.save then saved = 1 end
 
           else
             #if there are multiple subtasks, give a diff set of options here
             # @task = Task.new(title: params[:tasktitle])
             # @task.subtasks.build(title: params[:tasktitle][:title])
-
 
           end
 

@@ -9,7 +9,7 @@
    <p> Estimated Duration: <%= @task.estimated_duration %></p>
    <p> Deadline: <%= @task.priority %></p>
    <p> Notes: <%= @task.notes %></p>
-   <p>The following user(s) is/are assigned to this task:
+   <p>The following user(s) is/are assigned to this task:</p>
      <ul>
         <% @subtask.users.each do |user| %>
           <li><%= user.username %></li>

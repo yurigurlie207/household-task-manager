@@ -50,7 +50,7 @@
 <p>
   Assign Task to the Following User(s):<br>
   <% User.all.each do |user| %>
-    <input type="checkbox" name="user[user_ids][]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
+    <input type="checkbox" name="users[]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
   <% end %>
 </p>
 
