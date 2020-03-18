@@ -1,4 +1,4 @@
-<h1>Create a Subtask for Task: <a href="/task/#{@task.id}'>"<%= @task.title %></a></h1>
+<h1>Create a Subtask for Task: <%= @add_link = '<a href="' + "../../#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
 
 <form action="/subtasks" method="POST">
 
