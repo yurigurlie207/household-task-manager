@@ -15,11 +15,9 @@ class TaskController < ApplicationController
 
     if @task.no_subtask == true
       @subtask = Subtask.where(task_id: params[:id]).first
-        # @subtask.users.each do |user|
-        #   puts "USER"
-        #   puts user.username
-        # end
     else
+
+
     end
 
       # taskid = params[:id].to_s
@@ -37,9 +35,10 @@ class TaskController < ApplicationController
         # else
           #can add in user as base object later, for now reference everything from task level
           saved = 0
+          @task = Task.create(params['task'])
+
           if params[:task][:no_subtask] == '1'
             #if there is a checkbox for no subtasks, make subtask the same as task
-            @task = Task.create(params['task'])
             @subtask = Subtask.create(params['task'])
             @subtask.task = @task
             @subtask.user_ids = params[:users]
@@ -47,10 +46,7 @@ class TaskController < ApplicationController
             if @subtask.save then saved = 1 end
 
           else
-            #if there are multiple subtasks, give a diff set of options here
-            # @task = Task.new(title: params[:tasktitle])
-            # @task.subtasks.build(title: params[:tasktitle][:title])
-
+            saved = 1
           end
 
           if saved == 1
