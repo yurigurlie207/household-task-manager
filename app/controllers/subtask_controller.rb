@@ -1,6 +1,7 @@
 class SubtaskController < ApplicationController
 
-  get '/subtask/new' do
+  get '/tasks/:id/subtasks/new' do
+    @task = Task.find_by_id(params[:id])
     erb :'/tasks/subtasks/new'
   end
 

@@ -16,8 +16,7 @@ class TaskController < ApplicationController
     if @task.no_subtask == true
       @subtask = Subtask.where(task_id: params[:id]).first
     else
-
-
+      @subtasks = Subtask.where(task_id: params[:id])
     end
 
       # taskid = params[:id].to_s
