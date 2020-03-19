@@ -1,6 +1,7 @@
 <h1>Create a Subtask for Task: <%= @add_link = '<a href="' + "../../#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
 
-<form action="/subtasks" method="POST">
+<!-- <form action="/subtasks" method="POST"> -->
+<%= @form_open = '<form action="' + "../../#{@task.id}/subtasks"  + '" method="POST"' + '>' %>
 
 <p>
   <label for="subtask_title">Subtask Title: </label>
@@ -14,7 +15,7 @@
 
 <p>
   <label for="est_time">Estimate Time to Complete:</label>
-  <select id="est_time" name="subtask[est_dur]" required>
+  <select id="est_time" name="subtask[estimated_duration]" required>
     <option value="five">5 minutes</option>
     <option value="ten">10 minutes</option>
     <option value="twenty">20 minutes</option>
