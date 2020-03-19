@@ -11,6 +11,12 @@ class SubtaskController < ApplicationController
     erb :'/tasks/subtasks/show'
   end
 
+  get '/tasks/:id/subtasks/:sid/edit' do
+    @task = Task.find_by_id(params[:id])
+    @subtask = Subtask.find_by_id(params[:sid])
+    erb :'/tasks/subtasks/edit'
+  end
+
   post '/tasks/:id/subtasks' do
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.create(params['subtask'])
