@@ -1,22 +1,22 @@
 
-<h1>Edit a Subtask for Task: <%= @add_link = '<a href="' + "../../#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
+<h1>Edit a Subtask for Task: <%= @add_link = '<a href="' + "../../../#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
 
   <!-- <form action="/subtasks" method="POST"> -->
-<%= @form_open = '<form action="' + "../../#{@task.id}/subtasks/#{@subtask.id}"  + '" method="POST"' + '>' %>
+<%= @form_open = '<form action="' + "../../subtasks/#{@subtask.id}"  + '" method="POST"' + '>' %>
 <input type="hidden" name="_method" value="PATCH">
   <p>
     <label for="subtask_title">Subtask Title: </label>
-    <input type="text" name="subtask[title]" id="subtask_title" required>
-    <datalist id="subtask_title">
+    <input type="text" name="subtask[title]" id="subtask_title" value="<%= @subtask.title %>" required>
+    <!-- <datalist id="subtask_title">
       <% Subtask.all.each do |subtask| %>
       <option><%= subtask.title %></option>
         <% end %>
-    </datalist>
+    </datalist> -->
   </p>
 
   <p>
     <label for="est_time">Estimate Time to Complete:</label>
-    <select id="est_time" name="subtask[estimated_duration]" required>
+    <select id="est_time" name="subtask[estimated_duration]" value="<%= @subtask.estimated_duration %>" required>
       <option value="five">5 minutes</option>
       <option value="ten">10 minutes</option>
       <option value="twenty">20 minutes</option>
