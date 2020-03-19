@@ -13,9 +13,6 @@ class SubtaskController < ApplicationController
 
   post '/tasks/:id/subtasks' do
     @task = Task.find_by_id(params[:id])
-    puts "HELLO"
-    puts @task.id
-
     @subtask = Subtask.create(params['subtask'])
     @subtask.task = @task
     @subtask.user_ids = params[:users]
@@ -30,6 +27,17 @@ class SubtaskController < ApplicationController
       redirect to "/tasks/#{@task.id}/subtasks/new"
     end
 
+  end
+
+  patch '/tasks/:id/subtasks/:sid' do
+    @task = Task.find_by_id(params[:id])
+    @subtask = Subtask.create(params['subtask'])
+    @subtask.task = @task
+    @subtask.user_ids = params[:users]
+    @subtask.save
+
+    # flash[:message] = "Successfully updated song."
+    redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
   end
 
 end
