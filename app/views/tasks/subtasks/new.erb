@@ -5,11 +5,16 @@
 <p>
   <label for="subtask_title">Subtask Title: </label>
   <input type="text" name="subtask[title]" id="subtask_title" required>
+  <datalist id="subtask_title">
+    <% Subtask.all.each do |subtask| %>
+    <option><%= subtask.title %></option>
+      <% end %>
+  </datalist>
 </p>
 
 <p>
   <label for="est_time">Estimate Time to Complete:</label>
-  <select id="est_time" name="task[est_dur]" required>
+  <select id="est_time" name="subtask[est_dur]" required>
     <option value="five">5 minutes</option>
     <option value="ten">10 minutes</option>
     <option value="twenty">20 minutes</option>
@@ -37,13 +42,16 @@
   </p>
 
   <p>
-
-    <label for="subtask_notes">Notes:</label>
-    <input type="text" name="subtask[notes]" id="subtask_notes">
+    <label for="subtask_notes">General Notes:</label><br>
+    <textarea  name="subtask[notes]" id="subtask_notes" cols="80" rows="10"></textarea>
   </p>
 
-  <!-- no need for feedback on new task form -->
-
+  <p>
+    Assign Subtask to the Following User(s):<br>
+    <% User.all.each do |user| %>
+      <input type="checkbox" name="users[]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
+    <% end %>
+  </p>
 
   <input type="Submit" value="Create Subtask">
 </form>

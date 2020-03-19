@@ -54,12 +54,12 @@
   <label for="female">There are NO subtasks</label><br>
 </p>
 
-  <p>
-    Assign Task to the Following User(s):<br>
-    <% User.all.each do |user| %>
-      <input type="checkbox" name="users[]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
-    <% end %>
-  </p>
+<p>
+  Assign Task to the Following User(s):<br>
+  <% User.all.each do |user| %>
+    <input type="checkbox" name="users[]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
+  <% end %>
+</p>
 
 
   <input type="submit" value="Create Task">
