@@ -50,9 +50,12 @@
 
     <p>
       Assign Subtask to the Following User(s):<br>
-      <% User.all.each do |user| %>
-        <input type="checkbox" name="users[]" id="<%= 'user_' + user.id.to_s %>" value="<%= user.id %>"><%= user.username %></input><br>
-      <% end %>
+
+    <% User.all.each do |user| %>
+    <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
+    <label><%= user.username %></label> <br>
+    <% end %>
+
     </p>
 
     <input type="Submit" value="Save Changes to Subtask">
