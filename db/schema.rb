@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.string "estimated_duration"
+    t.integer "estimated_duration"
     t.date "deadline"
     t.string "priority"
     t.text "notes"
