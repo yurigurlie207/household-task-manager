@@ -37,7 +37,8 @@ class SubtaskController < ApplicationController
 
   patch '/tasks/:id/subtasks/:sid' do
     @task = Task.find_by_id(params[:id])
-    @subtask = Subtask.create(params['subtask'])
+    @subtask = Subtask.find_by_id(params[:sid])
+    @subtask.update(params['subtask'])
     @subtask.task = @task
     @subtask.user_ids = params[:users]
     @subtask.save

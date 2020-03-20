@@ -6,32 +6,28 @@
 <input type="hidden" name="_method" value="PATCH">
   <p>
     <label for="subtask_title">Subtask Title: </label>
-    <input type="text" name="subtask[title]" id="subtask_title" value="<%= @subtask.title %>" required>
-    <!-- <datalist id="subtask_title">
-      <% Subtask.all.each do |subtask| %>
-      <option><%= subtask.title %></option>
-        <% end %>
-    </datalist> -->
+    <input type="text" name="subtask[title]" id="subtask_title" value="<%=@subtask.title%>" required></input>
+
   </p>
 
   <p>
     <label for="est_time">Estimate Time to Complete:</label>
     <select id="est_time" name="subtask[estimated_duration]" value="<%= @subtask.estimated_duration %>" required>
-      <option value="five">5 minutes</option>
-      <option value="ten">10 minutes</option>
-      <option value="twenty">20 minutes</option>
-      <option value="half">30 minutes</option>
-      <option value="forty">40 minutes</option>
-      <option value="hour">60 minutes</option>
-      <option value="ninty">90 minutes</option>
-      <option value="twohour">120 minutes</option></select>
+      <option value=5>5 minutes</option>
+      <option value=10>10 minutes</option>
+      <option value=20>20 minutes</option>
+      <option value=30>30 minutes</option>
+      <option value=40>40 minutes</option>
+      <option value=60>60 minutes</option>
+      <option value=90>90 minutes</option>
+      <option value=120>120 minutes</option></select>
     </p>
 
     <!-- no need for actual time for completely on new task form -->
 
     <p>
       <label for="priority">Priority:</label>
-      <select id="priority" name="subtask[priority]" required>
+      <select id="priority" name="subtask[priority]" value='<% @subtask.priority %>'required>
         <option value="Low">Low</option>
         <option value="Moderate">Moderate</option>
         <option value="Important">Important</option>
@@ -40,12 +36,17 @@
 
     <p>
       <label for="deadline">Must Be Done By:</label>
-      <input type="date" id="deadline" name="subtask[deadline]">
+      <input type="date" id="deadline" name="subtask[deadline]" value='<% @subtask.deadline %>'>
     </p>
 
     <p>
       <label for="subtask_notes">General Notes:</label><br>
-      <textarea  name="subtask[notes]" id="subtask_notes" cols="80" rows="10"></textarea>
+      <textarea  name="subtask[notes]" id="subtask_notes" cols="80" rows="10" value='<% @subtask.notes %>'></textarea>
+    </p>
+
+    <p>
+      <label for="subtask_feedback">Feedback:</label><br>
+      <textarea  name="subtask[feedback]" id="subtask_feedback" cols="80" rows="10" value='<% @subtask.feedback %>'></textarea>
     </p>
 
     <p>
