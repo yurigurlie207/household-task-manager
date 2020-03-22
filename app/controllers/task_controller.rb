@@ -24,6 +24,11 @@ class TaskController < ApplicationController
      erb :'tasks/show'
  end
 
+ get '/tasks/:id/edit' do
+   @task = Task.find_by_id(params[:id])
+   erb :'/tasks/edit'
+ end
+
   post '/tasks' do
 
     #A LOT OF REFACTORING NEEDS TO HAPPEN HERE I'M SURE ----------------------------------------------
@@ -60,5 +65,25 @@ class TaskController < ApplicationController
       # end
 
   end #end of post /task
+
+  patch '/tasks/:id' do
+  
+    @task = Task.find_by_id(params[:id])
+      orig_nosub = @task.no_subtask
+    @task.update(params['task'])
+
+    if params[:task][:no_subtask] == '1' && orig_nosub == true
+      #if there is a checkbox for no subtasks, make subtask the same as task
+      @subtask = Subtask.update(params['task'])
+      # @subtask.task = @task
+      @subtask.user_ids = params[:users]
+   else
+     @subtask = Subtask.create(params['task'])
+     @subtask.task = @task
+     @subtask.user_ids = params[:users]
+   end
+    # flash[:message] = "Successfully updated song."
+    redirect to "/tasks/#{@task.id}"
+  end
 
 end #end of class
