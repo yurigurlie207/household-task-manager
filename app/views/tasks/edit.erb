@@ -44,10 +44,10 @@
       <textarea  name="task[notes]" id="task_notes" cols="80" rows="10" value='<% @task.notes %>'></textarea>
     </p>
 
-    <p>
-      <label for="task_feedback">Feedback:</label><br>
-      <textarea  name="task[feedback]" id="task_feedback" cols="80" rows="10" value='<% @task.feedback %>'></textarea>
-    </p>
+    <!-- <p>
+      <label for="subtask_feedback">Feedback:</label><br>
+      <textarea  name="subtask[feedback]" id="subtask_feedback" cols="80" rows="10" value='<% @subtask.feedback %>'></textarea>
+    </p> -->
 
     <% if @task.no_subtask == 1 %>
       <p>

@@ -31,7 +31,7 @@
 
 <% end %>
 <div>
-  <a href="">Edit</a>
+   <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
 </div>
 <div>
   <a href="">Delete</a>

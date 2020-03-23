@@ -26,6 +26,11 @@ class TaskController < ApplicationController
 
  get '/tasks/:id/edit' do
    @task = Task.find_by_id(params[:id])
+   if @task.no_subtask == true
+        @subtask = Subtask.where(task_id: params[:id]).first
+    else
+      @subtasks = Subtask.where(task_id: params[:id])
+    end
    erb :'/tasks/edit'
  end
 
@@ -67,20 +72,21 @@ class TaskController < ApplicationController
   end #end of post /task
 
   patch '/tasks/:id' do
-  
+
     @task = Task.find_by_id(params[:id])
-      orig_nosub = @task.no_subtask
+    orig_nosub = @task.no_subtask
     @task.update(params['task'])
+
 
     if params[:task][:no_subtask] == '1' && orig_nosub == true
       #if there is a checkbox for no subtasks, make subtask the same as task
-      @subtask = Subtask.update(params['task'])
+      @subtask = Subtask.where(task_id: params[:id]).first
+      @subtask = Subtask.update(params['task'], params['subtask'])
       # @subtask.task = @task
       @subtask.user_ids = params[:users]
-   else
-     @subtask = Subtask.create(params['task'])
-     @subtask.task = @task
-     @subtask.user_ids = params[:users]
+   elsif params[:task][:no_subtask] == '0' && orig_nosub == true
+      #delete single subtask
+      Subtask.where(task_id: @task.id).destroy_all
    end
     # flash[:message] = "Successfully updated song."
     redirect to "/tasks/#{@task.id}"
