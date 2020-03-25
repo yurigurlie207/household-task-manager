@@ -81,13 +81,18 @@ class TaskController < ApplicationController
     if params[:task][:no_subtask] == '1' && orig_nosub == true
       #if there is a checkbox for no subtasks, make subtask the same as task
       @subtask = Subtask.where(task_id: params[:id]).first
-      @subtask = Subtask.update(params['task'], params['subtask'])
-      # @subtask.task = @task
+      @subtask.update(params['task'])
       @subtask.user_ids = params[:users]
-   elsif params[:task][:no_subtask] == '0' && orig_nosub == true
+    elsif params[:task][:no_subtask] == '0' && orig_nosub == true
       #delete single subtask
       Subtask.where(task_id: @task.id).destroy_all
-   end
+    else #if orig no sub is false, and params no subtask is true
+      @subtask = Subtask.create(params['task'])
+      @subtask.task = @task
+      @subtask.user_ids = params[:users]
+
+    end
+
     # flash[:message] = "Successfully updated song."
     redirect to "/tasks/#{@task.id}"
   end

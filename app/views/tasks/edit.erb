@@ -1,5 +1,5 @@
 
-<h1>Edit Task: <%= @add_link = '<a href="' + "../../#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
+<h1>Edit Task: <%= @add_link = '<a href="' + "../../tasks/#{@task.id}" + '">' +  @task.title + '</a>' %></h1>
 
   <!-- <form action="/subtasks" method="POST"> -->
 <%= @form_open = '<form action="' + "../#{@task.id}"  + '" method="POST"' + '>' %>
@@ -44,37 +44,64 @@
       <textarea  name="task[notes]" id="task_notes" cols="80" rows="10" value='<% @task.notes %>'></textarea>
     </p>
 
-    <!-- <p>
-      <label for="subtask_feedback">Feedback:</label><br>
-      <textarea  name="subtask[feedback]" id="subtask_feedback" cols="80" rows="10" value='<% @subtask.feedback %>'></textarea>
-    </p> -->
 
-    <% if @task.no_subtask == 1 %>
+    <% if @task.no_subtask == true %>
       <p>
-        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0">
+        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" onclick="hideUsers()">
         <label for="male">There are subtasks.</label><br>
-        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" selected>
+        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" checked="checked" onclick="showUsers()">
         <label for="female">There are NO subtasks</label><br>
       </p>
     <% else %>
       <p>
-        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" selected>
+        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" checked="checked" onclick="hideUsers()">
         <label for="male">There are subtasks.</label><br>
-        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1">
+        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" onclick="showUsers()">
         <label for="female">There are NO subtasks</label><br>
       </p>
     <% end %>
 
 
-    <p>
-      Assign Task to the Following User(s):<br>
+          <% if @task.no_subtask == true %>
+          <p id="origlist">
+            Assign Task to the Following User(s):<br>
 
-    <% User.all.each do |user| %>
-    <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
-    <label><%= user.username %></label> <br>
-    <% end %>
+          <% User.all.each do |user| %>
+          <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
+          <label><%= user.username %></label> <br>
+          <% end %>
 
-    </p>
+        </p>
+        <% else %>
+         <p id="userlist" style="display: none">
+           Assign Task to the Following User(s):<br>
+
+         <% User.all.each do |user| %>
+         <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
+         <label><%= user.username %></label> <br>
+         <% end %>
+
+         </p>
+        <%end%>
+
+
+
+      <script>
+       function showUsers() {
+         document.getElementById("userlist").style.display = "block"
+         document.getElementById("origlist").style.display = "block"
+       }
+       function hideUsers() {
+         document.getElementById("userlist").style.display = "none"
+         document.getElementById("origlist").style.display = "none"
+
+       }
+     </script>
+
+
+
+
+
 
     <input type="Submit" value="Save Changes to Task">
   </form>
