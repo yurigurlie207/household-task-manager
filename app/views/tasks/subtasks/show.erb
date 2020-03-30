@@ -22,11 +22,17 @@
  </div>
 
 
+
+
+ <div>
+   <%= @form_open = '<form action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/delete"  + '" method="POST"' + '>' %>
+     <input id="hidden" type="hidden" name="_method" value="DELETE">
+     <input type="submit" value="Delete Subtask">
+     </form>
+ </div>
+
  <div>
    <%= @add_link = '<a href="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' + "Edit Subtask" + '</a>' %>
- </div>
- <div>
-   <a href="">Delete</a>
  </div>
  <div>
    <a href="">My Profile</a>
