@@ -47,4 +47,17 @@ class SubtaskController < ApplicationController
     redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
   end
 
+  delete '/tasks/:id/subtasks/:sid/delete' do
+  #  if logged_in?
+     @subtask = Subtask.find_by_id(params[:sid])
+    #  if @tweet && @tweet.user == current_user
+       @subtask.delete
+    #  end
+     redirect to '/tasks/#{@task.id}'
+  #  else
+  #    redirect to '/login'
+  #  end
+ end
+
+
 end
