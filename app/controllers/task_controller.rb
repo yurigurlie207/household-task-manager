@@ -100,9 +100,8 @@ class TaskController < ApplicationController
   delete '/tasks/:id/delete' do
   #  if logged_in?
     @task = Task.find_by_id(params[:id])
-    @subtask = Subtask.find_by_id(params[:sid])
     #  if @tweet && @tweet.user == current_user
-       @subtask.delete
+       @task.delete
     #  end
      redirect to "/tasks"
   #  else
