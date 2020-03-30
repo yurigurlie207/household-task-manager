@@ -97,4 +97,18 @@ class TaskController < ApplicationController
     redirect to "/tasks/#{@task.id}"
   end
 
+  delete '/tasks/:id/delete' do
+  #  if logged_in?
+    @task = Task.find_by_id(params[:id])
+    @subtask = Subtask.find_by_id(params[:sid])
+    #  if @tweet && @tweet.user == current_user
+       @subtask.delete
+    #  end
+     redirect to "/tasks"
+  #  else
+  #    redirect to '/login'
+  #  end
+ end
+
+
 end #end of class

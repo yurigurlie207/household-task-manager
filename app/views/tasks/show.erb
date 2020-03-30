@@ -30,11 +30,16 @@
    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %><br>
 
 <% end %>
+
+<div>
+  <%= @form_open = '<form action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Task">
+    </form>
+</div>
+
 <div>
    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
-</div>
-<div>
-  <a href="">Delete</a>
 </div>
 <div>
   <a href="">My Profile</a>
