@@ -3,32 +3,43 @@ class UserController < ApplicationController
 
   get '/user/signup' do
     if !logged_in?
-      erb :'user/signup'
+      erb :'/user/signup'
     else
-      redirect to '/tasks'
+      redirect to '/userhome'
     end
   end
 
-  get '/login' do
+  get '/user/login' do
     if !logged_in?
-      erb :'users/login'
+      erb :'/user/login'
     else
-      redirect to '/tasks'
+      redirect to '/userhome'
     end
   end
 
-  post '/tasks' do
+  post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
-    redirect to '/signup'
-  else
-    @user = User.create(params["user"])
-    session[:user_id] = @user.id
-    redirect to '/tasks'
+      redirect to '/signup'
+    else
+      @user = User.create(params["user"])
+      session[:user_id] = @user.id
+      redirect to '/user/profile'
+    end
   end
 
-  end #end of post /task
+    get '/user/logout' do
+        if logged_in?
+          session.destroy
+          redirect to '/user/login'
+        else
+          redirect to '/'
+        end
+    end
 
-
+    get '/user/:id' do
+      @user = User.find_by(params[:id])
+      erb :'user/profile'
+  end
 
 
 end
