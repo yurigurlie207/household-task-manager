@@ -47,6 +47,18 @@ class UserController < ApplicationController
    end
   end
 
+  patch '/user/:id' do
+
+    if !logged_in?
+      erb :'/user/login'
+    else
+      @user = User.find_by_id(session[:user_id])
+      @user.update(params['user'])
+        redirect to "/user/#{@user.id}"
+    end
+
+  end
+
     get '/user/logout' do
         if logged_in?
           session.destroy

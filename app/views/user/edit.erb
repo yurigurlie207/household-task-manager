@@ -1,0 +1,9 @@
+<h1>Update My Profile</h2>
+
+  <!-- <form action="/subtasks" method="POST"> -->
+<%= @form_open = '<form action="' + "../../user/#{@user.id}"  + '" method="POST"' + '>' %>
+<input type="hidden" name="_method" value="PATCH">
+
+
+    <input type="Submit" value="Save Changes to Profile">
+  </form>
