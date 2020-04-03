@@ -8,6 +8,7 @@ class SubtaskController < ApplicationController
   get '/tasks/:id/subtasks/:sid' do
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
+    @user = User.find_by_id(session[:user_id])
     erb :'/tasks/subtasks/show'
   end
 

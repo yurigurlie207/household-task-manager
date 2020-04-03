@@ -21,6 +21,7 @@ class TaskController < ApplicationController
 
       # taskid = params[:id].to_s
     #  @subtasks = Subtask.where("task_id = " + taskid)
+     @user = User.find_by_id(session[:user_id])
      erb :'tasks/show'
  end
 

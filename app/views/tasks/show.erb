@@ -42,13 +42,13 @@
    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
 </div>
 <div>
-  <a href="">My Profile</a>
+  <%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br>
 </div>
 <div>
-  <a href="">Home</a>
+  <a href="../user/userhome">User Home</a><br>
 </div>
 <div>
-  <a href="">Log Out</a>
+  <a href="../user/logout">Log Out</a>
 </div>
 
 <!-- #This Shows A Single Task
