@@ -5,7 +5,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/signup'
     else
-      redirect to '/userhome'
+      redirect to '/user/userhome'
     end
   end
 
@@ -13,7 +13,15 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
-      redirect to '/userhome'
+      redirect to '/user/userhome'
+    end
+  end
+
+  get '/user/userhome' do
+    if !logged_in?
+      erb :'/user/login'
+    else
+      erb :'/user/userhome'
     end
   end
 
@@ -38,7 +46,16 @@ class UserController < ApplicationController
 
     get '/user/:id' do
       @user = User.find_by_id(params[:id])
-      erb :'user/profile'
+      erb :'/user/profile'
+  end
+
+  get '/user/logout' do
+      if logged_in?
+        session.destroy
+        redirect to '/user/login'
+      else
+        redirect to '/'
+      end
   end
 
 
