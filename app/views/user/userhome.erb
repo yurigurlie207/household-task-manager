@@ -1,6 +1,9 @@
 
-<% @usertask = UserTask.all %>
+
 
 List All Tasks
 
+
+
+<%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br>
 <a href= "../user/logout">Log Out</a>

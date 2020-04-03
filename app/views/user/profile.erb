@@ -1,8 +1,11 @@
-<h1>Hello,</h1>
-<%= @user.username %>
+<h1>Hello, <%= @user.username %></h1>
+
 
 <div><%= @user.firstname %></div>
 <div><%= @user.lastname %></div>
 <div><%= @user.email %></div>
 <div><%= @user.role %></div>
 <div><%= @user.birthdate %></div>
+
+<a href="../user/userhome">User Home</a><br>
+<a href= "../user/logout">Log Out</a>

@@ -21,6 +21,8 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
+      @usertask = UserTask.all
+      @user = User.find_by_id(session[:user_id])
       erb :'/user/userhome'
     end
   end
