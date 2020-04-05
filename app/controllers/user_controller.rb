@@ -49,7 +49,7 @@ class UserController < ApplicationController
 
   get '/user/:id/edit' do
     if !logged_in?
-      erb : '/user/login'
+      erb :'/user/login'
     else
       @user = User.find_by_id(session[:user_id])
       erb :'/user/edit'
@@ -65,20 +65,14 @@ class UserController < ApplicationController
         redirect to "/user/#{@user.id}"
     end
 
-  end
-
-    get '/user/logout' do
-        if logged_in?
-          session.destroy
-          redirect to '/user/login'
-        else
-          redirect to '/'
-        end
+  delete '/user/:id/delete' do
+     if !logged_in?
+       erb :'/user/login'
+    else
+      @user = User.find_by_id(session[:user_id])
+      @user.delete
+      redirect to '/user/signup'
     end
-
-    get '/user/:id' do
-      @user = User.find_by_id(params[:id])
-      erb :'/user/profile'
   end
 
   get '/user/logout' do
@@ -90,5 +84,9 @@ class UserController < ApplicationController
       end
   end
 
+  get '/user/:id' do
+      @user = User.find_by_id(params[:id])
+      erb :'/user/profile'
+  end
 
 end
