@@ -5,5 +5,26 @@
 <input type="hidden" name="_method" value="PATCH">
 
 
+    <p>
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="user[firstname]" value='<% @user.firstname %>'>
+    </p>
+
+    <p>
+      <label for="first_name">Last Name:</label>
+      <input type="text" id="last_name" name="user[lastname]" value='<% @user.lastname %>'>
+    </p>
+
+    <p>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="user[email]" value='<% @user.email %>'>
+    </p>
+
+    <p>
+    <label for="dob">Last Name:</label>
+    <input type="date" id="dob" name="user[birthdate]" value='<% @user.birthdate %>'>
+    </p>
+
+
     <input type="Submit" value="Save Changes to Profile">
   </form>

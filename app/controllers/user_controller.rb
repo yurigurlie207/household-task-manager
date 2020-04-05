@@ -47,8 +47,16 @@ class UserController < ApplicationController
    end
   end
 
-  patch '/user/:id' do
+  get '/user/:id/edit' do
+    if !logged_in?
+      erb : '/user/login'
+    else
+      @user = User.find_by_id(session[:user_id])
+      erb :'/user/edit'
+    end
+  end
 
+  patch '/user/:id' do
     if !logged_in?
       erb :'/user/login'
     else
