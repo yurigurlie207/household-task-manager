@@ -1,7 +1,11 @@
+<h1>Here are your assigned subtasks:</h1>
+<ul>
+  <% @usertasks.each |subtask| do %>
+    <% subtask = Subtask.find_by_id(usertask.subtask_id) %>
+      <li><%= @add_link = '<a href="' + "../tasks/#{subtask.task_id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %></li>
+  <% end %>
+</ul>
 
-
-
-List All Tasks
 
 
 
