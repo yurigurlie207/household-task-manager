@@ -7,7 +7,6 @@ dad = User.create(username: "Dad")
 son = User.create(username: "Son")
 daughter = User.create(username: "Daughter")
 
-
 #CREATE TASKS and SUBTASKS
 dishes = Task.create(title: "Dishes")
 load_dishes = Subtask.create(title: "Load Dishwasher")
