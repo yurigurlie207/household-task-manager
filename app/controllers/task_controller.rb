@@ -100,11 +100,19 @@ class TaskController < ApplicationController
 
   delete '/tasks/:id/delete' do
   #  if logged_in?
+
+    @subtasks = Subtask.where(task_id: params[:id])
+    if @subtasks
+      @subtasks.each do |subtask|
+        UserTask.delete_all(subtask_id: subtask.id)
+      end
+    end
+
     @task = Task.find_by_id(params[:id])
-    #  if @tweet && @tweet.user == current_user
-       @task.delete
+    @task.delete
+
     #  end
-     redirect to "/tasks"
+     redirect to "/user/userhome"
   #  else
   #    redirect to '/login'
   #  end
