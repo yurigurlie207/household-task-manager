@@ -6,6 +6,9 @@ class TaskController < ApplicationController
     erb :'tasks/index'
   end
 
+  get '/tasks/subtasks' do
+    erb :'/tasks/subtasks/index'
+  end
   get '/tasks/new' do
     erb :'tasks/new'
   end

@@ -1,6 +1,10 @@
 
 class UserController < ApplicationController
 
+  get '/user' do
+    erb :'/user/index'
+  end
+
   get '/user/signup' do
     if !logged_in?
       erb :'/user/signup'
