@@ -1,5 +1,5 @@
 <ul>
    <% Subtask.all.each do |subtask| %>
-    <li><%= @add_link = '<a href="' + "/tasks/#{subtask.task_id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %><br></li>
+    <li><%= @add_link = '<a href="' + "/tasks/#{subtask.task_id}/subtasks/#{subtask.id}" + '">' +"#{subtask.id}"+ ": "+ "#{subtask.title}" + '</a>' %><br></li>
   <% end%>
 </ul>

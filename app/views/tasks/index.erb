@@ -1,5 +1,5 @@
 <ul>
    <% @tasks.each do |task| %>
-    <li><%= @add_link = '<a href="' + "/tasks/#{task.id}" + '">' + "#{task.title}" + '</a>' %><br></li>
+    <li><%= @add_link = '<a href="' + "/tasks/#{task.id}" + '">' + "#{task.id}" + ": "+ "#{task.title}" + '</a>' %><br></li>
   <% end%>
 </ul>
