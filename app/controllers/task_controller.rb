@@ -6,6 +6,9 @@ class TaskController < ApplicationController
     erb :'tasks/index'
   end
 
+  #-----put this here so the routing doesn't try to go to task/id first,
+  #even though this is meant to be a subtask control
+  #used for testing only --------------------------------------------------
   get '/tasks/subtasks' do
     erb :'/tasks/subtasks/index'
   end
