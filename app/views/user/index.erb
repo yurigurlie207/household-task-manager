@@ -8,6 +8,6 @@
 
 <ul>
 <% UserTask.all.each do |usertask| %>
-  <li>User ID: <%= usertask.user_id %>, Subtask ID: <%= usertask.subtask_id%></li>
+  <li>User id: <%= usertask.user_id %>, Task id: <%= Subtask.find_by_id(usertask.subtask_id).task_id %>, Subtask id: <%= usertask.subtask_id%></li>
 <% end %>
 </ul>
