@@ -108,11 +108,7 @@ class TaskController < ApplicationController
   #  if logged_in?
 
     @subtasks = Subtask.where(task_id: params[:id])
-    if @subtasks
-      @subtasks.each do |subtask|
-        UserTask.delete_all(subtask_id: subtask.id)
-      end
-    end
+    @subtasks.delete_all
 
     @task = Task.find_by_id(params[:id])
     @task.delete
