@@ -4,6 +4,12 @@
   <%= @form_open = '<form action="' + "../../user/#{@user.id}"  + '" method="POST"' + '>' %>
   <input type="hidden" name="_method" value="PATCH">
 
+  <p>
+    <label for="user_name">Username:</label>
+    <input type="text" id="user_name" name="user[username]" value="<%= @user.username %>">
+  </p>
+
+
     <p>
       <label for="first_name">First Name:</label>
       <input type="text" id="first_name" name="user[firstname]" value="<%= @user.firstname %>">
@@ -24,6 +30,10 @@
     <input type="date" id="dob" name="user[birthdate]" value='<%= @user.birthdate %>'>
     </p>
 
+    <p>
+      <label for="role">Role:</label>
+      <input type="text" id="role" name="user[role]" value="<%= @user.role %>">
+    </p>
 
     <input type="Submit" value="Save Changes to Profile">
   </form>
@@ -31,7 +41,7 @@
 
 
 <div>
-  <%= @form_open = '<form action="' + "../user/#{@user.id}/delete"  + '" method="POST"' + '>' %>
+  <%= @form_open = '<form action="' + "../../user/#{@user.id}/delete"  + '" method="POST"' + '>' %>
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete User">
     </form>

@@ -1,11 +1,6 @@
 #seed data for testing
 #use commented out data to test app
 
-#CREATE USERS
-# mom = User.create(username: "Mom")
-# dad = User.create(username: "Dad")
-# son = User.create(username: "Son")
-# daughter = User.create(username: "Daughter")
 
 #CREATE TASKS and SUBTASKS
 dishes = Task.create(title: "Dishes")
