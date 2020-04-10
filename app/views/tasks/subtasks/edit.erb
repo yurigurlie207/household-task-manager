@@ -59,8 +59,10 @@
 
     </p>
 
+    <p>
+    <label>Mark Task Complete</label>
     <input type="checkbox" name="subtask[complete]" value="<%= @subtask.complete %>" id="subtask_complete" <%='checked' if @subtask.complete == true %>>
-
+    </p>
 
     <input type="Submit" value="Save Changes to Subtask">
   </form>

@@ -21,6 +21,7 @@ class SubtaskController < ApplicationController
   post '/tasks/:id/subtasks' do
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.create(params['subtask'])
+    @subtask.complete = false
     @subtask.task = @task
     @subtask.user_ids = params[:users]
 
