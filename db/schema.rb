@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
     t.text "notes"
     t.text "feedback"
     t.boolean "no_subtask"
+    t.boolean "complete"
     t.integer "task_id"
   end
 
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_190204) do
     t.string "priority"
     t.text "notes"
     t.boolean "no_subtask"
+    t.boolean "complete"
   end
 
   create_table "user_tasks", force: :cascade do |t|
