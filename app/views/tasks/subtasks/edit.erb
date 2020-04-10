@@ -50,7 +50,7 @@
     </p>
 
     <p>
-      Assign Subtask to the Following User(s):<br>
+    Assign Subtask to the Following User(s):<br>
 
     <% User.all.each do |user| %>
     <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
@@ -58,6 +58,9 @@
     <% end %>
 
     </p>
+
+    <input type="checkbox" name="subtask[complete]" value="<%= @subtask.complete %>" id="subtask_complete" <%='checked' if @subtask.complete == true %>>
+
 
     <input type="Submit" value="Save Changes to Subtask">
   </form>
