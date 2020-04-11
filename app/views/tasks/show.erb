@@ -36,12 +36,6 @@
 
 <% end %>
 
-<div>
-  <%= @form_open = '<form action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Task">
-    </form>
-</div>
 
 <div>
   <% can_edit = 0 %>
@@ -63,6 +57,13 @@
 
 
    <% if can_edit == 1 %>
+     <div>
+       <%= @form_open = '<form action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
+         <input id="hidden" type="hidden" name="_method" value="DELETE">
+         <input type="submit" value="Delete Task">
+         </form>
+     </div>
+
     <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
    <% end %>
 </div>

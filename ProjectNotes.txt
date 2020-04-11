@@ -1,3 +1,9 @@
+***********************************************************************************************************************************
+        The below are some notes typed up during the initial ideation and creation of the project.
+        Once the full architecture was up and running, no more additional notes were added. All changes should then
+        be read from the commit messages. -A.Y. 4/11/2020
+***********************************************************************************************************************************
+
 
 High Level Order of Build (in rough order of priority): ---------------------------------------------------------------------------
 

@@ -19,18 +19,13 @@
            <li><%= user.username %></li>
         <% end%>
       </ul>
-    <p> Task complete: <%= @subtask.complete %></p>
+    <p> Subtask complete: <%= @subtask.complete %></p>
  </div>
 
 
 
 
- <div>
-   <%= @form_open = '<form action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/delete"  + '" method="POST"' + '>' %>
-     <input id="hidden" type="hidden" name="_method" value="DELETE">
-     <input type="submit" value="Delete Subtask">
-     </form>
- </div>
+
 
  <div>
    <% can_edit = 0 %>
@@ -41,10 +36,15 @@
     <% end%>
 
     <% if can_edit == 1 %>
+      <div>
+        <%= @form_open = '<form action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/delete"  + '" method="POST"' + '>' %>
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete Subtask">
+          </form>
+      </div>
      <%= @add_link = '<a href="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' + "Edit Subtask" + '</a>' %>
     <% end %>
  </div>
-
 
 
  </div>
