@@ -57,6 +57,9 @@ class SubtaskController < ApplicationController
     if task_complete = 1
       @task.update(complete: true)
       @task.save
+    else
+      @task.update(complete: false)
+      @task.save
     end
 
     # flash[:message] = "Successfully updated song."
