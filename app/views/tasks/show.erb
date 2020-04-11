@@ -1,6 +1,11 @@
 <h1>Task Name:  </h1>
 <%= @task.title %>
-
+<h1> Status: </h1>
+<% if @task.complete == true %>
+   <p>Complete</p>
+<% else %>
+  <p> Incomplete </p>
+<% end %>
 
 <% if @task.no_subtask == true %>
 <div>

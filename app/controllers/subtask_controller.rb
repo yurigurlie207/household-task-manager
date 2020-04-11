@@ -46,7 +46,18 @@ class SubtaskController < ApplicationController
     @subtask.save
 
     #if all subtasks under task shows complete, then also mark task as complete
-    
+    task_complete = 1
+    @subtasks = Subtask.where(subtask_id: parasm[:sid])
+    @subtasks.each do |subtask|
+      if subtask.complete == false
+        task_complete = 0
+      end
+    end
+
+    if task_complete = 1
+      @task.update(complete: true)
+      @task.save
+    end
 
     # flash[:message] = "Successfully updated song."
     redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
