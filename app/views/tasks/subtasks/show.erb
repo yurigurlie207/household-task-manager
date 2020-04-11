@@ -33,7 +33,20 @@
  </div>
 
  <div>
-   <%= @add_link = '<a href="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' + "Edit Subtask" + '</a>' %>
+   <% can_edit = 0>
+   <% @subtask.users.each do |user| %>
+       <% if session[user_id] == user.id %>
+         <% can_edit = 1 %>
+       <% end>
+    <% end%>
+
+    <% if can_edit == 1 %>
+     <%= @add_link = '<a href="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' + "Edit Subtask" + '</a>' %>
+    <% end %>
+ </div>
+
+
+
  </div>
  <div>
    <%= @add_link = '<a href="' + "../../../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br>
