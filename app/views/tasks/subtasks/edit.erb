@@ -60,12 +60,21 @@
     </p>
 
     <p>
-    <label>Is Task Complete?</label><br>
+    <label>Is Subtask Complete?</label><br>
+
+
+    <% if @subtask.complete == true %>
     <!-- <input type="checkbox" name="subtask[complete]" value="1" id="subtask_complete" <%='checked' if @subtask.complete == true %>> -->
-      <input type="radio" id="incomplete" name="subtask[complete]" value="0" checked=<%='checked' if @subtask.complete == false %>>
+      <input type="radio" id="incomplete" name="subtask[complete]" value="0">
       <label for="male">Incomplete</label><br>
-      <input type="radio" id="complete" name="subtask[complete]" value="1" checked=<%='checked' if @subtask.complete == true %>>
+      <input type="radio" id="complete" name="subtask[complete]" value="1" checked>
       <label for="female">Completed</label><br>
+    <% else %>
+      <input type="radio" id="incomplete" name="subtask[complete]" value="0" checked>
+      <label for="male">Incomplete</label><br>
+      <input type="radio" id="complete" name="subtask[complete]" value="1">
+      <label for="female">Completed</label><br>
+    <% end %>
 
     </p>
 
