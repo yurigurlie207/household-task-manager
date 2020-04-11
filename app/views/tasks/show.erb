@@ -45,11 +45,22 @@
 
 <div>
   <% can_edit = 0>
-  <% @subtask.users.each do |user| %>
-      <% if session[user_id] == user.id %>
-        <% can_edit = 1 %>
-      <% end>
-   <% end%>
+  <% if @task.no_subtask == true %>
+    <% @subtask.users.each do |user| %>
+        <% if session[user_id] == user.id %>
+          <% can_edit = 1 %>
+        <% end>
+     <% end%>
+  <% else %>
+      <% @subtasks.each do |subtask| %>
+        <% subtask.users.each do |user| %>
+          <% if session[user_id] == user.id %>
+            <% can_edit = 1 %>
+          <% end>
+       <% end%>
+      <% end %>
+  <% end %>
+
 
    <% if can_edit == 1 %>
     <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
