@@ -47,7 +47,7 @@ class SubtaskController < ApplicationController
 
     #if all subtasks under task shows complete, then also mark task as complete
     task_complete = 1
-    @subtasks = Subtask.where(subtask_id: parasm[:sid])
+    @subtasks = Subtask.where(id: params[:sid])
     @subtasks.each do |subtask|
       if subtask.complete == false
         task_complete = 0

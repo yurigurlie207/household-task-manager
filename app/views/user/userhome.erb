@@ -3,7 +3,13 @@
   <% if @usertasks %>
     <% @usertasks.each do |usertask| %>
     <% subtask = Subtask.find_by_id(usertask.subtask_id) %>
-      <li><%= @add_link = '<a href="' + "../tasks/#{subtask.task_id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %></li>
+      <li><%= @add_link = '<a href="' + "../tasks/#{subtask.task_id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %>
+      - <% if subtask.complete == true %>
+         Complete
+      <% else %>
+        Incomplete
+      <% end %>
+    </li>
     <% end %>
   <% end %>
 </ul>
