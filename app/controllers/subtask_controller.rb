@@ -54,7 +54,7 @@ class SubtaskController < ApplicationController
       end
     end
 
-    if task_complete = 1
+    if task_complete == 1
       @task.update(complete: true)
       @task.save
     else
