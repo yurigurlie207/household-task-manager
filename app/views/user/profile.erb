@@ -10,10 +10,10 @@
 
 
 <div>
-  <% can_edit = 0>
-  <% if session[user_id] == @user.id %>
+  <% can_edit = 0 %>
+  <% if session[:user_id] == @user.id %>
     <% can_edit = 1 %>
-  <% end>
+  <% end %>
 
    <% if can_edit == 1 %>
    <%= @add_link = '<a href="' + "../user/#{@user.id}/edit" + '">' + "Edit Profile" + '</a>' %><br>
