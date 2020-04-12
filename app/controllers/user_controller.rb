@@ -1,6 +1,8 @@
-require rack-flash
+require 'rack-flash'
 
 class UserController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   get '/user' do
     erb :'/user/index'
