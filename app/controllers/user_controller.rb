@@ -1,3 +1,4 @@
+require rack-flash
 
 class UserController < ApplicationController
 
