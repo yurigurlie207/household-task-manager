@@ -1,8 +1,8 @@
 require 'rack-flash'
 
 class UserController < ApplicationController
-  enable :sessions
-  use Rack::Flash
+  # enable :sessions
+  # use Rack::Flash
 
   get '/user' do
     erb :'/user/index'
@@ -37,13 +37,13 @@ class UserController < ApplicationController
 
   post '/signup' do
 
-    usernames = User.all.collect { |user| user.username }
+    # usernames = User.all.collect { |user| user.username }
 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/user/signup'
-    elsif usernames.include?(params[:username])
-      flash[:alert] = "This username already exists"
-      redirect to '/user/signup'
+    # elsif usernames.include?(params[:username])
+    #   flash[:alert] = "This username already exists"
+    #   redirect to '/user/signup'
     else
       @user = User.create(params["user"])
       session[:user_id] = @user.id
