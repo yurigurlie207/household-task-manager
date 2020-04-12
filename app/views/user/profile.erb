@@ -1,14 +1,14 @@
 <h1>Hello, <%= @user.username %></h1>
 
 
-<div><%= @user.firstname %> </div>
-<div><%= @user.lastname %></div>
-<div><%= @user.email %></div>
-<div><%= @user.role %></div>
-<div><%= @user.birthdate %></div>
+<div>First Name: <%= @user.firstname %> </div>
+<div>Last Name: <%= @user.lastname %></div>
+<div>Email: <%= @user.email %></div>
+<div>Role: <%= @user.role %></div>
+<div>DOB: <%= @user.birthdate %></div>
 
 
-
+<br><br>
 <div>
   <% can_edit = 0 %>
   <% if session[:user_id] == @user.id %>
@@ -16,13 +16,8 @@
   <% end %>
 
    <% if can_edit == 1 %>
-   <%= @add_link = '<a href="' + "../user/#{@user.id}/edit" + '">' + "Edit Profile" + '</a>' %><br>
+   <%= @form_open = '<form action="' + "../user/#{@user.id}/edit"  + '" method="GET"' + '>' %><input type="submit" value="Update Profile"></form><br><br>
    <% end %>
 </div>
 
-<div>
-<a href="../user/userhome">User Home</a>
-</div>
-<div>
-<a href= "../user/logout">Log Out</a>
-</div>
+<div><a href="../user/userhome">User Home</a> | <a href= "../user/logout">Log Out</a></div>

@@ -68,12 +68,7 @@
    <% end %>
 </div>
 
+<br><br>
 <div>
-  <%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br>
-</div>
-<div>
-  <a href="../user/userhome">User Home</a><br>
-</div>
-<div>
-  <a href="../user/logout">Log Out</a>
+  <%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br> | <a href="../user/userhome">User Home</a> | <a href="../user/logout">Log Out</a>
 </div>
