@@ -1,6 +1,6 @@
 <h1>Task Name:  </h1>
 <%= @task.title %>
-<h1> Status: </h1>
+<h1> Task Status: </h1>
 <% if @task.complete == true %>
    <p>Complete</p>
 <% else %>
@@ -23,7 +23,7 @@
 </div>
 
 <% else %>
-  <h3>Add or Delete Subtasks here: </h3>
+
   <h4> Current Subtasks</h4>
   <ul>
   <% @subtasks.each do |subtask| %>
@@ -36,7 +36,7 @@
 
 <% end %>
 
-
+<br><br><br>
 <div>
   <% can_edit = 0 %>
   <% if @task.no_subtask == true %>

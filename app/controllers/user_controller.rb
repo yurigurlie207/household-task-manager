@@ -33,7 +33,13 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
+
+    usernames = User.all.collect { |user| user.username }
+
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      redirect to '/user/signup'
+    elsif usernames.include?(params[:username])
+      flash[:alert] = "This username already exists"
       redirect to '/user/signup'
     else
       @user = User.create(params["user"])
