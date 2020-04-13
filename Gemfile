@@ -11,8 +11,9 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-gem 'rack-flash3'
-#
+gem 'sinatra-flash'
+# gem 'rack-flash3'
+
 # group :test do
 #   gem 'rspec'
 #   gem 'capybara'
