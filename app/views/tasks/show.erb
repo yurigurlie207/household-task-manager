@@ -28,7 +28,7 @@
   <ul>
   <% @subtasks.each do |subtask| %>
     <!-- <a href = "subtasks/#{subtask.id}"><%= subtask.title %><br> -->
-      <li><%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %></li>
+      <li><%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %> :: <%= subtask.complete ? "Complete" : "Incomplete" %></li>
    <% end %>
  </ul>
 
@@ -57,18 +57,15 @@
 
 
    <% if can_edit == 1 %>
-     <div>
-       <%= @form_open = '<form action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
-         <input id="hidden" type="hidden" name="_method" value="DELETE">
-         <input type="submit" value="Delete Task">
-         </form>
-     </div>
-
-    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/edit" + '">' + "Edit Task" + '</a>' %><br>
+   <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/edit" + '">' %><button type="submit">Edit Task</button></form>
+   <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
+     <input id="hidden" type="hidden" name="_method" value="DELETE">
+     <input type="submit" value="Delete Task">
+   </form>
    <% end %>
 </div>
 
 <br><br>
 <div>
-  <%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %><br> | <a href="../user/userhome">User Home</a> | <a href="../user/logout">Log Out</a>
+  <%= @add_link = '<a href="' + "../user/#{@user.id}" + '">' + "My Profile" + '</a>' %> | <a href="../user/userhome">User Home</a> | <a href="../user/logout">Log Out</a>
 </div>
