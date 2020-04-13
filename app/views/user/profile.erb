@@ -16,7 +16,8 @@
   <% end %>
 
    <% if can_edit == 1 %>
-   <%= @form_open = '<form action="' + "../user/#{@user.id}/edit"  + '" method="GET"' + '>' %><input type="submit" value="Update Profile"></form><br><br>
+   <%= @form_open = '<form style="display:inline;" action="' + "../user/#{@user.id}/edit" + '">' %>
+     <button type="submit">Update Profile</button></form><br><br>
    <% end %>
 </div>
 
