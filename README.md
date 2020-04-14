@@ -27,13 +27,12 @@ Login as "mom" password "mom"
 OR create a new user yourself
 
 
-
 As a user, you can:
 - update your profile information
 - create tasks
 - create subtasks
 - assign users to task/subtasks upon creation, even if you don't assign yourself
-- update/remove tasks that you have been assigned
+- view/update/remove tasks that you have been assigned.
 
 
 Contributor's Guide
@@ -46,3 +45,13 @@ License
 This project is licensed under the MIT License (https://opensource.org/licenses/MIT) - see the [LICENSE.txt)
 
 Acknowledgments
+- Flatiron School Sinatra Labs for reference:
+    learn-co-students/sinatra-fwitter-group-project-v-000
+    learn-co-students/nyc-sinatra-v-000
+    learn-co-students/playlister-sinatra-v-000
+
+- Reference for figuring out flash messages:
+    https://github.com/h-miiaah/foodie-central
+
+- This post helped me decide on my project's associations when I got stuck
+    https://flatironschool.com/blog/why-you-dont-need-has-and-belongs-to-many
