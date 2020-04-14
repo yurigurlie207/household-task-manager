@@ -38,9 +38,10 @@ class UserController < ApplicationController
     usernames = User.all.collect { |user| user.username }
 
     if params['user']['username'] == "" || params['user']['password'] == ""
-      redirect to '/user/signup'
+      flash.now[:error] = "please make sure you have a username and password"
+      erb :'/user/signup'
     elsif usernames.include?(params['user']['username'])
-      flash.now[:error] = "This username already exists"
+      flash.now[:error] = "username already exists"
       erb :'/user/signup'
     else
       @user = User.create(params["user"])
