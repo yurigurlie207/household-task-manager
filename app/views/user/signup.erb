@@ -1,6 +1,6 @@
- <% if flash.has?(:alert) %>
-   <%= flash[:alert] %>
- <% end %>
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
 
 <h3>Sign Up</h3>
 <form action="/signup" method="POST">

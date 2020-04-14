@@ -34,13 +34,13 @@ class UserController < ApplicationController
 
   post '/signup' do
 
-    # usernames = User.all.collect { |user| user.username }
+    usernames = User.all.collect { |user| user.username }
 
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    if params['user']['username'] == "" || params['user']['password'] == ""
       redirect to '/user/signup'
-    elsif usernames.include?(params[:username])
-      flash[:alert] = "This username already exists"
-      redirect to '/user/signup'
+    elsif usernames.include?(params['user']['username'])
+      flash.now[:error] = "This username already exists"
+      erb :'/user/signup'
     else
       @user = User.create(params["user"])
       session[:user_id] = @user.id
