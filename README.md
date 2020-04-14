@@ -4,7 +4,7 @@ Members of the household each would have their own accounts set up, and are allo
 need to be done around the house. They can pass these tasks onto each other, and mark them complete when done.
 
 Users can select from a preloaded list of reoccurring tasks, or create new ones. Users can also create subtasks for
-more complicated tasks. The goal of the app is to motivate family members to work together to learn responsibility and organization. 
+more complicated tasks. The goal of the app is to motivate family members to work together to learn responsibility and organization.
 
 
 Prerequisites
@@ -25,6 +25,8 @@ In your IDE command prompt, type "Bundle Install"
 Run local server
 Login as "mom" password "mom"
 OR create a new user yourself
+
+
 
 As a user, you can:
 - update your profile information

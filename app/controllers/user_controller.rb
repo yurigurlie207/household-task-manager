@@ -21,6 +21,7 @@ class UserController < ApplicationController
     end
   end
 
+
   get '/user/userhome' do
     if !logged_in?
       erb :'/user/login'
