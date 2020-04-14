@@ -31,7 +31,7 @@ As a user, you can:
 - update your profile information
 - create tasks
 - create subtasks
-- assign users to task/subtasks upon creation, even if you don't assign yourself
+- assign users to task/subtasks upon creation
 - view/update/remove tasks that you have been assigned.
 
 
@@ -39,7 +39,7 @@ Contributor's Guide
 Contributors to this gem are all welcome at GitHub: https://github.com/yurigurlie207/pregnancy-weeks-info-cli-gem Ruby Gem Guidelines: https://guides.rubygems.org/contributing/
 
 Authors
-Adrienne Yao - Initial work - Yurigurlie207
+Adrienne Yao - Initial work - Yurigurlie207 on git hub
 
 License
 This project is licensed under the MIT License (https://opensource.org/licenses/MIT) - see the [LICENSE.txt)
