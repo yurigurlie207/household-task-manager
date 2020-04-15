@@ -1,7 +1,3 @@
-#seed data for testing
-#use commented out data to test app
-
-
 #CREATE TASKS and SUBTASKS
 dishes = Task.create(title: "Dishes", complete: false)
 load_dishes = Subtask.create(title: "Load Dishwasher", complete: false)
