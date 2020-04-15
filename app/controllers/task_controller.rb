@@ -45,15 +45,14 @@ class TaskController < ApplicationController
   post '/tasks' do
 
           saved = 0
-          @task = Task.create(params['task'])
 
           if params[:task][:no_subtask] == '1'
             #if there is a checkbox for no subtasks, make subtask the same as task
-
-            if params[:users]
+            if !params[:users]
               flash.now[:error] = "You need to have at least one person assigned"
               erb :"/tasks/new"
             else
+              @task = Task.create(params['task'])
               @subtask = Subtask.create(params['task'])
               @subtask.task = @task
               @subtask.user_ids = params[:users]
@@ -62,6 +61,7 @@ class TaskController < ApplicationController
             end
 
           else
+            @task = Task.create(params['task'])
             saved = 1
           end
 
