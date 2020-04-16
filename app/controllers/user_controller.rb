@@ -56,7 +56,8 @@ class UserController < ApplicationController
      session[:user_id] = user.id
      redirect to "/user/userhome"
    else
-     redirect to '/user/signup'
+     flash.now[:error] = "incorrect login or password"
+     erb :'/user/login'
    end
   end
 

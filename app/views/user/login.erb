@@ -1,3 +1,9 @@
+<div style="color:red;">
+<% flash.keys.each do |type| %>
+    <%= flash[type] %>
+<% end %>
+  </div>
+
 <div>
 <h1>Login to your account:</h1>
 <form method="post" action="/login">
