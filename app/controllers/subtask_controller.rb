@@ -28,7 +28,7 @@ class SubtaskController < ApplicationController
         flash.next[:error] = "You need to have at least one person assigned"
         erb :"/tasks/#{@task.id}/subtasks/new"
       else
-    
+
         @subtask = Subtask.create(params['subtask'])
         @subtask.complete = false
         @subtask.task = @task
@@ -49,10 +49,16 @@ class SubtaskController < ApplicationController
   patch '/tasks/:id/subtasks/:sid' do
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
-    @subtask.update(params['subtask'])
-    @subtask.task = @task
-    @subtask.user_ids = params[:users]
-    @subtask.save
+
+    if !params[:users]
+      flash.next[:error] = "You need to have at least one person assigned"
+      erb :"/tasks/#{@task.id}/subtasks/#{@subtask.id}/edit"
+    else
+      @subtask.update(params['subtask'])
+      @subtask.task = @task
+      @subtask.user_ids = params[:users]
+      @subtask.save
+    end
 
     #if all subtasks under task shows complete, then also mark task as complete
     task_complete = 1

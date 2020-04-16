@@ -80,6 +80,11 @@ class TaskController < ApplicationController
     orig_nosub = @task.no_subtask
     @task.update(params['task'])
 
+    if params[:task][:no_subtask] == '1' && !params[:users]
+      flash.next[:error] = "You need to have at least one person assigned"
+      erb :"/tasks/#{@task.id}/edit"
+    end
+
     if params[:task][:no_subtask] == '1' && orig_nosub == true
       #if there is a checkbox for no subtasks, make subtask the same as task
       @subtask = Subtask.where(task_id: params[:id]).first
