@@ -51,7 +51,7 @@ Acknowledgments
     learn-co-students/playlister-sinatra-v-000
 
 - Reference for figuring out flash messages:
-    https://github.com/h-miiaah/foodie-central
+    https://gist.github.com/cmkoller/0d3b048b3c4b48ee4955
 
 - This post helped me decide on my project's associations when I got stuck
     https://flatironschool.com/blog/why-you-dont-need-has-and-belongs-to-many

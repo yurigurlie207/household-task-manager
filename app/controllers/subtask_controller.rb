@@ -19,17 +19,26 @@ class SubtaskController < ApplicationController
   end
 
   post '/tasks/:id/subtasks' do
-    @task = Task.find_by_id(params[:id])
-    @subtask = Subtask.create(params['subtask'])
-    @subtask.complete = false
-    @subtask.task = @task
-    @subtask.user_ids = params[:users]
 
-    if @subtask.save then saved = 1 end
+
+    saved = 0
+    @task = Task.find_by_id(params[:id])
+
+      if !params[:users]
+        flash.next[:error] = "You need to have at least one person assigned"
+        erb :"/tasks/#{@task.id}/subtasks/new"
+      else
+    
+        @subtask = Subtask.create(params['subtask'])
+        @subtask.complete = false
+        @subtask.task = @task
+        @subtask.user_ids = params[:users]
+
+        if @subtask.save then saved = 1 end
+      end
 
     if saved == 1
       # flash[:message] = "Successfully created task."
-
       redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
     else
       redirect to "/tasks/#{@task.id}/subtasks/new"

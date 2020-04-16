@@ -1,6 +1,8 @@
-<% if flash[:error] %>
-  <div style="color:red;"><%= flash[:error] %></div>
+<div style="color:red;">
+<% flash.keys.each do |type| %>
+    <%= flash[type] %>
 <% end %>
+  </div>
 
 
 <h1>Create A New Task</h1>
