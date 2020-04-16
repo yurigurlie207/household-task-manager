@@ -85,13 +85,14 @@ class SubtaskController < ApplicationController
   #  if logged_in?
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
-    #  if @tweet && @tweet.user == current_user
-       @subtask.delete
-    #  end
+
+    @usertasks = UserTask.where(params[:sid])
+    @usertasks.delete_all
+
+    @subtask.delete
+
      redirect to "/tasks/#{@task.id}"
-  #  else
-  #    redirect to '/login'
-  #  end
+
  end
 
 

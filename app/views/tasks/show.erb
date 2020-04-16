@@ -56,7 +56,9 @@
 
 
    <% if can_edit == 1 %>
-   <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %><br>
+     <% if @task.no_subtask == false %>
+      <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %><br>
+     <% end %>
 
    <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/edit" + '">' %><button type="submit">Edit Task</button></form>
    <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>

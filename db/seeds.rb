@@ -1,3 +1,8 @@
+User.create(username: "mom", password: "mom")
+User.create(username: "dad", password: "dad")
+User.create(username: "son", password: "son")
+User.create(username: "daughter", password: "daughter")
+
 #CREATE TASKS and SUBTASKS
 dishes = Task.create(title: "Dishes", complete: false)
 load_dishes = Subtask.create(title: "Load Dishwasher", complete: false)

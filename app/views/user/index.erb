@@ -1,6 +1,6 @@
 <ul>
 <% User.all.each do |user| %>
-  <li><%= @add_link = '<a href="' + "../user/#{user.id}" + '">' + "#{user.id}" + ": " +"#{user.role}" + '</a>' %><br>
+  <li><%= @add_link = '<a href="' + "../user/#{user.id}" + '">' + "#{user.id}" + ": " +"#{user.username}" + '</a>' %><br>
 </li>
 <% end %>
 </ul>
