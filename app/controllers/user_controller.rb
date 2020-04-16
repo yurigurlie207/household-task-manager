@@ -41,7 +41,7 @@ class UserController < ApplicationController
       flash.now[:error] = "please make sure you have a username and password"
       erb :'/user/signup'
     elsif usernames.include?(params['user']['username'])
-      flash.next[:error] = "username already exists"
+      flash.now[:error] = "username already exists"
       erb :'/user/signup'
     else
       @user = User.create(params["user"])

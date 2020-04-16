@@ -1,12 +1,10 @@
-<!-- # <% if flash[:error] %>
-#   <div style="color:red;"><%= flash[:error] %></div>
-# <% end %> -->
+
 <div style="color:red;">
 <% flash.keys.each do |type| %>
     <%= flash[type] %>
+<% end %>
   </div>
 
-<% end %>
 <h3>Sign Up</h3>
 <form action="/signup" method="POST">
   <p>Username: <input type="text" name="user[username]"></p>
