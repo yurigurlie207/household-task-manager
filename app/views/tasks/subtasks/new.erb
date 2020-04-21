@@ -62,3 +62,7 @@
 
   <input type="Submit" value="Create Subtask">
 </form>
+
+<div>
+ <a href="../../../user/userhome">User Home</a> | <%= @add_link = '<a href="' + "../../../user/#{@user.id}" + '">' + "My Profile" + '</a>' %> | <a href="../../../user/logout">Log Out</a>
+</div>
