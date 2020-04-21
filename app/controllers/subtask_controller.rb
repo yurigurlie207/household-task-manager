@@ -22,7 +22,7 @@ class SubtaskController < ApplicationController
 
   post '/tasks/:id/subtasks' do
 
-
+    @user = current_user
     saved = 0
     @task = Task.find_by_id(params[:id])
 
@@ -49,6 +49,8 @@ class SubtaskController < ApplicationController
   end
 
   patch '/tasks/:id/subtasks/:sid' do
+
+    @user = current_user
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
 
