@@ -94,10 +94,10 @@ class TaskController < ApplicationController
       @subtask.user_ids = params[:users]
     elsif params[:task][:no_subtask] == '0' && orig_nosub == true
       #delete single subtask
-      @subtask = Subtask.where(task_id: @task.id)
-      @usertask = UserTask.where(subtask_id: @subtask.id)
-      @subtask.delete
-      @usertask.delete
+      @subtask = Subtask.where(task_id: @task.id).first
+      @usertask = UserTask.where(subtask_id: @subtask.id).first
+      @subtask.destroy_all
+      @usertask.destroy_all
     else #if orig no sub is false, and params no subtask is true
       @subtask = Subtask.create(params['task'])
       @subtask.task = @task
@@ -109,7 +109,9 @@ class TaskController < ApplicationController
   end
 
   delete '/tasks/:id/delete' do
-  #  if logged_in?
+  #  =maybe I should be usig this, because of all the uncessary code
+  # @task = Task.find_by_id(params[:id])
+  # @task.delete_all
 
     @subtasks = Subtask.where(task_id: params[:id])
 
