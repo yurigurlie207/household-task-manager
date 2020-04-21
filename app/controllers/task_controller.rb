@@ -14,6 +14,7 @@ class TaskController < ApplicationController
   end
 
   get '/tasks/new' do
+    @user = current_user
     erb :'tasks/new'
   end
 
@@ -33,6 +34,7 @@ class TaskController < ApplicationController
  end
 
  get '/tasks/:id/edit' do
+   @user = current_user
    @task = Task.find_by_id(params[:id])
    if @task.no_subtask == true
         @subtask = Subtask.where(task_id: params[:id]).first
@@ -43,7 +45,6 @@ class TaskController < ApplicationController
  end
 
   post '/tasks' do
-
           saved = 0
 
           if params[:task][:no_subtask] == '1'
@@ -70,7 +71,6 @@ class TaskController < ApplicationController
           else
             redirect to "/tasks/new"
           end
-
 
   end #end of post /task
 

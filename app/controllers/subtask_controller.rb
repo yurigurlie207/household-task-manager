@@ -1,6 +1,7 @@
 class SubtaskController < ApplicationController
 
   get '/tasks/:id/subtasks/new' do
+    @user = current_user
     @task = Task.find_by_id(params[:id])
     erb :'/tasks/subtasks/new'
   end
@@ -13,6 +14,7 @@ class SubtaskController < ApplicationController
   end
 
   get '/tasks/:id/subtasks/:sid/edit' do
+    @user = current_user
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
     erb :'/tasks/subtasks/edit'
