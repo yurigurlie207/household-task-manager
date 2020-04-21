@@ -92,7 +92,10 @@ class TaskController < ApplicationController
       @subtask.user_ids = params[:users]
     elsif params[:task][:no_subtask] == '0' && orig_nosub == true
       #delete single subtask
-      Subtask.where(task_id: @task.id).destroy_all
+      @subtask = Subtask.where(task_id: @task.id)
+      @usertask = UserTask.where(subtask_id: @subtask.id)
+      @subtask.delete
+      @usertask.delete
     else #if orig no sub is false, and params no subtask is true
       @subtask = Subtask.create(params['task'])
       @subtask.task = @task
