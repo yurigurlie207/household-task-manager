@@ -90,8 +90,11 @@ class SubtaskController < ApplicationController
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
 
-    @usertasks = UserTask.where(params[:sid])
-    @usertasks.delete_all
+    @usertasks = UserTask.where(subtask_id: params[:sid])
+
+    @usertasks.each do |usertask|
+      usertask.delete
+    end
 
     @subtask.delete
 

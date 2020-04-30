@@ -96,10 +96,10 @@ class TaskController < ApplicationController
       #delete single subtask
       @subtask = Subtask.where(task_id: @task.id).first
       @usertasks = UserTask.where(subtask_id: @subtask.id)
-      @subtask.destroy
+      @subtask.delete
 
       @usertasks.each do |usertask|
-        usertask.destroy
+        usertask.delete
       end
     else #if orig no sub is false, and params no subtask is true
       @subtask = Subtask.create(params['task'])
@@ -119,8 +119,11 @@ class TaskController < ApplicationController
     @subtasks = Subtask.where(task_id: params[:id])
 
     @subtasks.each do |subtask|
-      usertask = UserTask.where(subtask_id: subtask.id)
-      usertask.delete
+      usertasks = UserTask.where(subtask_id: subtask.id)
+
+      usertasks.each do |usertask|
+        usertask.delete
+      end
     end
 
     @subtasks.delete_all
