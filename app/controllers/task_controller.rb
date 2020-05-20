@@ -10,12 +10,20 @@ class TaskController < ApplicationController
   #even though this is meant to be a subtask control
   #used for testing only --------------------------------------------------
   get '/tasks/subtasks' do
-    erb :'/tasks/subtasks/index'
+    if logged_in?
+      erb :'/tasks/subtasks/index'
+    else
+      erb :'/user/login'
+    end
   end
 
   get '/tasks/new' do
-    @user = current_user
-    erb :'tasks/new'
+    if logged_in?
+      @user = current_user
+      erb :'tasks/new'
+    else
+      erb :'/user/login'
+    end
   end
 
   get '/tasks/:id' do
@@ -40,14 +48,19 @@ class TaskController < ApplicationController
  end
 
  get '/tasks/:id/edit' do
-   @user = current_user
-   @task = Task.find_by_id(params[:id])
-   if @task.no_subtask == true
-        @subtask = Subtask.where(task_id: params[:id]).first
-    else
-      @subtasks = Subtask.where(task_id: params[:id])
-    end
-   erb :'/tasks/edit'
+   if logged_in?
+     @user = current_user
+     @task = Task.find_by_id(params[:id])
+     @no_subtask = @task.no_subtask
+
+     if @no_subtask
+          @subtask = Subtask.where(task_id: params[:id]).first
+     end
+
+     erb :'/tasks/edit'
+   else
+     erb :'/user/login'
+   end
  end
 
   post '/tasks' do

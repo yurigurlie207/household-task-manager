@@ -45,7 +45,7 @@
     </p>
 
 
-    <% if @task.no_subtask == true %>
+    <% if @no_subtask %>
       <p>
         <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" onclick="hideUsers()">
         <label for="male">There are subtasks.</label><br>
@@ -62,7 +62,7 @@
     <% end %>
 
 
-          <% if @task.no_subtask == true %>
+          <% if @no_subtask %>
           <p id="origlist">
             Assign Task to the Following User(s):<br>
 
