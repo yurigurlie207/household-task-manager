@@ -19,18 +19,24 @@ class TaskController < ApplicationController
   end
 
   get '/tasks/:id' do
-    @task = Task.find_by_id(params[:id])
 
-    if @task.no_subtask == true
-      @subtask = Subtask.where(task_id: params[:id]).first
-    else
+    if logged_in?
+      @task = Task.find_by_id(params[:id])
+      @user = User.find_by_id(session[:user_id])
+      @no_subtask = @task.no_subtask
       @subtasks = Subtask.where(task_id: params[:id])
-    end
 
-      # taskid = params[:id].to_s
-    #  @subtasks = Subtask.where("task_id = " + taskid)
-     @user = User.find_by_id(session[:user_id])
-     erb :'tasks/show'
+      @subtasks.each do |subtask|
+        subtask.users.each do |user|
+            if session[:user_id] == user.id
+                @can_edit = true
+             end
+          end
+      end
+       erb :'tasks/show'
+     else
+       erb :'/user/login'
+     end
  end
 
  get '/tasks/:id/edit' do

@@ -1,70 +1,45 @@
+
 <h1>Task Name:  </h1>
 <%= @task.title %>
 <h1> Task Status: </h1>
-<% if @task.complete == true %>
-   <p>Complete</p>
-<% else %>
-  <p> Incomplete </p>
-<% end %>
+<% if @task.complete %><p>Complete</p><% else %><p> Incomplete </p><% end %>
 
-<% if @task.no_subtask == true %>
-<div>
+<% if @no_subtask %>
   <h1>Task Description: </h1>
    <p> This task has <b>no subtasks</b> </p>
    <p> Estimated Duration: <%= @task.estimated_duration %></p>
    <p> Deadline: <%= @task.priority %></p>
    <p> Notes: <%= @task.notes %></p>
    <p>The following user(s) is/are assigned to this task:</p>
-     <ul>
-        <% @subtask.users.each do |user| %>
-          <li><%= user.username %></li>
-       <% end%>
-     </ul>
-</div>
-
-<% else %>
-
+   <ul>
+     <% @subtasks.each do |subtask| %>
+        <% subtask.users.each do |user| %>
+            <li><%= user.username %></li>
+        <% end %>
+      <% end %>
+  </ul>
+<%else%>
   <h4> Current Subtasks</h4>
   <ul>
   <% @subtasks.each do |subtask| %>
-    <!-- <a href = "subtasks/#{subtask.id}"><%= subtask.title %><br> -->
       <li><%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/#{subtask.id}" + '">' + "#{subtask.title}" + '</a>' %> :: <%= subtask.complete ? "Complete" : "Incomplete" %></li>
    <% end %>
- </ul>
-
-
-<% end %>
+  </ul>
+<%end%>
 
 <br><br><br>
 <div>
-  <% can_edit = 0 %>
-  <% if @task.no_subtask == true %>
-    <% @subtask.users.each do |user| %>
-        <% if session[:user_id] == user.id %>
-          <% can_edit = 1 %>
-        <% end %>
-     <% end%>
-  <% else %>
-      <% @subtasks.each do |subtask| %>
-        <% subtask.users.each do |user| %>
-          <% if session[:user_id] == user.id %>
-            <% can_edit = 1 %>
-          <% end %>
-       <% end %>
-      <% end %>
-  <% end %>
 
-
-  <% if @task.no_subtask == false %>
+  <% if !@no_subtask %>
    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %><br>
   <% end %>
-  
-   <% if can_edit == 1 %>
-   <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/edit" + '">' %><button type="submit">Edit Task</button></form>
-   <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
-     <input id="hidden" type="hidden" name="_method" value="DELETE">
-     <input type="submit" value="Delete Task">
-   </form>
+
+   <% if @can_edit ||= false %>
+     <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/edit" + '">' %><button type="submit">Edit Task</button></form>
+     <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
+       <input id="hidden" type="hidden" name="_method" value="DELETE">
+       <input type="submit" value="Delete Task">
+     </form>
    <% end %>
 </div>
 
