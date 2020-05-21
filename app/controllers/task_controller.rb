@@ -13,21 +13,22 @@ class TaskController < ApplicationController
     if logged_in?
       erb :'/tasks/subtasks/index'
     else
-      redirect to '/user/login'
+      erb :'/user/login'
     end
   end
+  #------------------------------------------------------------------------
+
 
   get '/tasks/new' do
     if logged_in?
       @user = current_user
       erb :'tasks/new'
     else
-      redirect to '/user/login'
+      erb :'/user/login'
     end
   end
 
   get '/tasks/:id' do
-
     if logged_in?
       @task = Task.find_by_id(params[:id])
       @user = User.find_by_id(session[:user_id])
@@ -43,26 +44,26 @@ class TaskController < ApplicationController
       end
        erb :'tasks/show'
      else
-       redirect to '/user/login'
+       erb :'/user/login'
      end
    end
 
 
-  get '/tasks/:id/edit' do
-   if logged_in?
-     @user = current_user
-     @task = Task.find_by_id(params[:id])
-     @no_subtask = @task.no_subtask
+   get '/tasks/:id/edit' do
+     if logged_in?
+       @user = current_user
+       @task = Task.find_by_id(params[:id])
+       @no_subtask = @task.no_subtask
 
-     if @no_subtask
-          @subtask = Subtask.where(task_id: params[:id]).first
+       if @no_subtask
+            @subtask = Subtask.where(task_id: params[:id]).first
+       end
+
+       erb :'/tasks/edit'
+     else
+       erb :'/user/login'
      end
-
-     erb :'/tasks/edit'
-   else
-     redirect to '/user/login'
    end
- end
 
   post '/tasks' do
     if logged_in?
@@ -87,12 +88,12 @@ class TaskController < ApplicationController
         end
 
         if saved ||= false
-          erb :"/tasks/#{@task.id}"
+          redirect to "/tasks/#{@task.id}"
         else
           redirect to "/tasks/new"
         end
     else
-      redicrect to '/user/login'
+      erb :'/user/login'
     end
 
   end #end of post /task
