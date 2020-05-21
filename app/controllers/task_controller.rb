@@ -13,7 +13,7 @@ class TaskController < ApplicationController
     if logged_in?
       erb :'/tasks/subtasks/index'
     else
-      erb :'/user/login'
+      redirect to '/user/login'
     end
   end
 
@@ -22,7 +22,7 @@ class TaskController < ApplicationController
       @user = current_user
       erb :'tasks/new'
     else
-      erb :'/user/login'
+      redirect to '/user/login'
     end
   end
 
@@ -43,11 +43,12 @@ class TaskController < ApplicationController
       end
        erb :'tasks/show'
      else
-       erb :'/user/login'
+       redirect to '/user/login'
      end
- end
+   end
 
- get '/tasks/:id/edit' do
+
+  get '/tasks/:id/edit' do
    if logged_in?
      @user = current_user
      @task = Task.find_by_id(params[:id])
@@ -59,7 +60,7 @@ class TaskController < ApplicationController
 
      erb :'/tasks/edit'
    else
-     erb :'/user/login'
+     redirect to '/user/login'
    end
  end
 
@@ -86,49 +87,51 @@ class TaskController < ApplicationController
         end
 
         if saved ||= false
-          redirect to "/tasks/#{@task.id}"
+          erb :"/tasks/#{@task.id}"
         else
           redirect to "/tasks/new"
         end
     else
-      erb :'/user/login'
+      redicrect to '/user/login'
     end
 
   end #end of post /task
 
   patch '/tasks/:id' do
-    @user = current_user
-    @task = Task.find_by_id(params[:id])
-    orig_nosub = @task.no_subtask
-    @task.update(params['task'])
+    if logged_in?
+      @user = current_user
+      @task = Task.find_by_id(params[:id])
+      @orig_nosub = @task.no_subtask
+      @task.update(params['task'])
 
-    if params[:task][:no_subtask] == '1' && !params[:users]
-      flash.next[:error] = "You need to have at least one person assigned"
-      erb :"/tasks/#{@task.id}/edit"
-    end
+      if params[:task][:no_subtask] == '1' && params[:users] == nil
+        flash.next[:error] = "You need to have at least one person assigned"
+        redirect to "/tasks/#{@task.id}/edit"
+      elsif
+        params[:task][:no_subtask] == '1' && @orig_nosub
+        #if there is a checkbox for no subtasks, make subtask the same as task
+        @subtask = Subtask.where(task_id: params[:id]).first
+        @subtask.update(params['task'])
+        @subtask.user_ids = params[:users]
+      elsif params[:task][:no_subtask] == '0' && @orig_nosub
+        #delete single subtask
+        @subtask = Subtask.where(task_id: @task.id).first
+        @usertasks = UserTask.where(subtask_id: @subtask.id)
+        @subtask.delete
 
-    if params[:task][:no_subtask] == '1' && orig_nosub == true
-      #if there is a checkbox for no subtasks, make subtask the same as task
-      @subtask = Subtask.where(task_id: params[:id]).first
-      @subtask.update(params['task'])
-      @subtask.user_ids = params[:users]
-    elsif params[:task][:no_subtask] == '0' && orig_nosub == true
-      #delete single subtask
-      @subtask = Subtask.where(task_id: @task.id).first
-      @usertasks = UserTask.where(subtask_id: @subtask.id)
-      @subtask.delete
-
-      @usertasks.each do |usertask|
-        usertask.delete
+        @usertasks.each do |usertask|
+          usertask.delete
+        end
+      else #if orig no sub is false, and params no subtask is true
+        @subtask = Subtask.create(params['task'])
+        @subtask.task = @task
+        @subtask.user_ids = params[:users]
       end
-    else #if orig no sub is false, and params no subtask is true
-      @subtask = Subtask.create(params['task'])
-      @subtask.task = @task
-      @subtask.user_ids = params[:users]
 
+      erb :"/tasks/#{@task.id}"
+    else
+      redirect to :'/user/login'
     end
-
-    redirect to "/tasks/#{@task.id}"
   end
 
   delete '/tasks/:id/delete' do

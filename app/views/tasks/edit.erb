@@ -62,30 +62,42 @@
     <% end %>
 
 
-          <% if @no_subtask %>
-          <p id="origlist">
-            Assign Task to the Following User(s):<br>
+    <!-- <% if @no_subtask %>
+      <p id="origlist">
+        Assign Task to the Following User(s):<br>
 
-          <% User.all.each do |user| %>
+        <% User.all.each do |user| %>
+        <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
+        <label><%= user.username %></label> <br>
+        <% end %>
+      </p>
+    <% else %>
+       <p id="userlist" style="display: none">
+         Assign Task to the Following User(s):<br>
+
+       <% User.all.each do |user| %>
+       <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
+       <label><%= user.username %></label> <br>
+       <% end %>
+
+      </p>
+  <%end%> -->
+
+    <p>
+      Assign Task to the Following User(s):<br>
+
+      <% User.all.each do |user| %>
+        <% if @no_subtask %>
           <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
-          <label><%= user.username %></label> <br>
-          <% end %>
-
-        </p>
-        <% else %>
-         <p id="userlist" style="display: none">
-           Assign Task to the Following User(s):<br>
-
-         <% User.all.each do |user| %>
-         <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
-         <label><%= user.username %></label> <br>
-         <% end %>
-
-         </p>
+        <%else%>
+          <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
         <%end%>
+      <label><%= user.username %></label> <br>
+      <% end %>
+    </p>
 
 
-
+<!--
       <script>
        function showUsers() {
          document.getElementById("userlist").style.display = "block"
@@ -96,11 +108,7 @@
          document.getElementById("origlist").style.display = "none"
 
        }
-     </script>
-
-
-
-
+     </script> -->
 
 
     <input type="Submit" value="Save Changes to Task">
