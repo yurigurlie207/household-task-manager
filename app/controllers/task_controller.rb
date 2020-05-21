@@ -65,8 +65,7 @@ class TaskController < ApplicationController
 
   post '/tasks' do
     if logged_in?
-        # @user = current_user
-
+        @user = current_user
         if params[:task][:no_subtask] == '1'
           #if there is a checkbox for no subtasks, make subtask the same as task
           if params[:users] == nil || !params[:users]
@@ -78,7 +77,7 @@ class TaskController < ApplicationController
             @subtask.task = @task
             @subtask.user_ids = params[:users]
 
-            if @subtask.save then saved = true end
+            @subtask.save ? saved = true : flash.next[:error] = "You need to have at least one person assigned"
           end
 
         else
@@ -89,7 +88,6 @@ class TaskController < ApplicationController
         if saved ||= false
           redirect to "/tasks/#{@task.id}"
         else
-          flash.next[:error] = "Something went wrong with your save, please check your inputs"
           redirect to "/tasks/new"
         end
     else
