@@ -34,7 +34,6 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-
     usernames = User.all.collect { |user| user.username }
 
     if params['user']['username'] == "" || params['user']['password'] == ""
@@ -76,7 +75,7 @@ class UserController < ApplicationController
     else
       @user = User.find_by_id(session[:user_id])
       @user.update(params['user'])
-        redirect to "/user/#{@user.id}"
+      redirect to "/user/#{@user.id}"
     end
   end
 
@@ -100,8 +99,11 @@ class UserController < ApplicationController
   end
 
   get '/user/:id' do
-      @user = User.find_by_id(params[:id])
-      erb :'/user/profile'
+    if !logged_in?
+      erb :'/user/login'
+     else
+        @user = User.find_by_id(params[:id])
+        erb :'/user/profile'
+    end
   end
-
 end
