@@ -134,31 +134,25 @@ class TaskController < ApplicationController
     end
   end
 
-  delete '/tasks/:id/delete' do
-  #  =maybe I should be usig this, because of all the uncessary code
-  # @task = Task.find_by_id(params[:id])
-  # @task.destroy
+ delete '/tasks/:id/delete' do
+    if logged_in?
+      @subtasks = Subtask.where(task_id: params[:id])
 
-    @subtasks = Subtask.where(task_id: params[:id])
-
-    @subtasks.each do |subtask|
-      usertasks = UserTask.where(subtask_id: subtask.id)
-
-      usertasks.each do |usertask|
-        usertask.delete
+      @subtasks.each do |subtask|
+        UserTask.where(subtask_id: subtask.id).each do |usertask|
+          usertask.delete
+        end
       end
-    end
 
-    @subtasks.delete_all
+      @subtasks.delete_all
 
-    @task = Task.find_by_id(params[:id])
-    @task.delete
+      @task = Task.find_by_id(params[:id])
+      @task.delete
 
-    #  end
-     redirect to "/user/userhome"
-  #  else
-  #    redirect to '/login'
-  #  end
+       redirect to "/user/userhome"
+     else
+       erb :'/user/login'
+     end
  end
 
 
