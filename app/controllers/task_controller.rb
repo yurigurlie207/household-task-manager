@@ -128,9 +128,9 @@ class TaskController < ApplicationController
         @subtask.user_ids = params[:users]
       end
 
-      erb :"/tasks/#{@task.id}"
+      redirect to "/tasks/#{@task.id}"
     else
-      redirect to :'/user/login'
+      erb :'/user/login'
     end
   end
 

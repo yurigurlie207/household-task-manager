@@ -56,7 +56,7 @@ class SubtaskController < ApplicationController
 
     if !params[:users]
       flash.next[:error] = "You need to have at least one person assigned"
-      erb :"/tasks/#{@task.id}/subtasks/#{@subtask.id}/edit"
+      redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}/edit"
     else
       @subtask.update(params['subtask'])
       @subtask.task = @task

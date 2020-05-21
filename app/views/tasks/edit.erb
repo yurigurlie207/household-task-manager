@@ -3,115 +3,91 @@
 
   <!-- <form action="/subtasks" method="POST"> -->
 <%= @form_open = '<form action="' + "../#{@task.id}"  + '" method="POST"' + '>' %>
-<input type="hidden" name="_method" value="PATCH">
-  <p>
-    <label for="task_title">Task Title: </label>
-    <input type="text" name="task[title]" id="task_title" value="<%=@task.title%>" required></input>
-
-  </p>
-
-  <p>
-    <label for="est_time">Estimate Time to Complete:</label>
-    <select id="est_time" name="task[estimated_duration]" value="<%= @task.estimated_duration %>" required>
-      <option value=5>5 minutes</option>
-      <option value=10>10 minutes</option>
-      <option value=20>20 minutes</option>
-      <option value=30>30 minutes</option>
-      <option value=40>40 minutes</option>
-      <option value=60>60 minutes</option>
-      <option value=90>90 minutes</option>
-      <option value=120>120 minutes</option></select>
-    </p>
-
-    <!-- no need for actual time for completely on new task form -->
-
+  <input type="hidden" name="_method" value="PATCH">
     <p>
-      <label for="priority">Priority:</label>
-      <select id="priority" name="task[priority]" value='<% @task.priority %>'required>
-        <option value="Low">Low</option>
-        <option value="Moderate">Moderate</option>
-        <option value="Important">Important</option>
-        <option value="Urgent">Urgent</option></select>
+      <label for="task_title">Task Title: </label>
+      <input type="text" name="task[title]" id="task_title" value="<%=@task.title%>" required></input>
     </p>
 
     <p>
-      <label for="deadline">Must Be Done By:</label>
-      <input type="date" id="deadline" name="task[deadline]" value='<% @task.deadline %>'>
+      <label for="est_time">Estimate Time to Complete:</label>
+      <select id="est_time" name="task[estimated_duration]" value="<%= @task.estimated_duration %>" required>
+        <option value=5>5 minutes</option>
+        <option value=10>10 minutes</option>
+        <option value=20>20 minutes</option>
+        <option value=30>30 minutes</option>
+        <option value=40>40 minutes</option>
+        <option value=60>60 minutes</option>
+        <option value=90>90 minutes</option>
+        <option value=120>120 minutes</option></select>
     </p>
 
-    <p>
-      <label for="task_notes">General Notes:</label><br>
-      <textarea  name="task[notes]" id="task_notes" cols="80" rows="10" value='<% @task.notes %>'></textarea>
-    </p>
+      <!-- no need for actual time for completely on new task form -->
 
-
-    <% if @no_subtask %>
       <p>
-        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" onclick="hideUsers()">
-        <label for="male">There are subtasks.</label><br>
-        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" checked="checked" onclick="showUsers()">
-        <label for="female">There are NO subtasks</label><br>
+        <label for="priority">Priority:</label>
+        <select id="priority" name="task[priority]" value='<% @task.priority %>'required>
+          <option value="Low">Low</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Important">Important</option>
+          <option value="Urgent">Urgent</option></select>
       </p>
-    <% else %>
+
       <p>
-        <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" checked="checked" onclick="hideUsers()">
-        <label for="male">There are subtasks.</label><br>
-        <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" onclick="showUsers()">
-        <label for="female">There are NO subtasks</label><br>
+        <label for="deadline">Must Be Done By:</label>
+        <input type="date" id="deadline" name="task[deadline]" value='<% @task.deadline %>'>
       </p>
-    <% end %>
+
+      <p>
+        <label for="task_notes">General Notes:</label><br>
+        <textarea  name="task[notes]" id="task_notes" cols="80" rows="10" value='<% @task.notes %>'></textarea>
+      </p>
 
 
-    <!-- <% if @no_subtask %>
-      <p id="origlist">
+      <% if @task.no_subtask %>
+        <p>
+          <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" onclick="hideUsers()">
+          <label for="male">There are subtasks.</label><br>
+          <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" checked="checked" onclick="showUsers()">
+          <label for="female">There are NO subtasks</label><br>
+        </p>
+      <% else %>
+        <p>
+          <input type="radio" id="has_subtask" name="task[no_subtask]" value="0" checked="checked" onclick="hideUsers()">
+          <label for="male">There are subtasks.</label><br>
+          <input type="radio" id="no_subtask" name="task[no_subtask]" value="1" onclick="showUsers()">
+          <label for="female">There are NO subtasks</label><br>
+        </p>
+      <% end %>
+
+
+
+      <p id="userlist">
         Assign Task to the Following User(s):<br>
 
         <% User.all.each do |user| %>
-        <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
+          <% if @task.no_subtask %>
+            <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
+          <%else%>
+            <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
+          <%end%>
         <label><%= user.username %></label> <br>
         <% end %>
       </p>
-    <% else %>
-       <p id="userlist" style="display: none">
-         Assign Task to the Following User(s):<br>
-
-       <% User.all.each do |user| %>
-       <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
-       <label><%= user.username %></label> <br>
-       <% end %>
-
-      </p>
-  <%end%> -->
-
-    <p>
-      Assign Task to the Following User(s):<br>
-
-      <% User.all.each do |user| %>
-        <% if @no_subtask %>
-          <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>" <%='checked' if @subtask.users.include?(user) %>>
-        <%else%>
-          <input type="checkbox" name="users[]" value="<%= user.id %>" id="<%= user.username %>">
-        <%end%>
-      <label><%= user.username %></label> <br>
-      <% end %>
-    </p>
 
 
-<!--
-      <script>
-       function showUsers() {
-         document.getElementById("userlist").style.display = "block"
-         document.getElementById("origlist").style.display = "block"
-       }
-       function hideUsers() {
-         document.getElementById("userlist").style.display = "none"
-         document.getElementById("origlist").style.display = "none"
 
-       }
-     </script> -->
+        <script>
+         function showUsers() {
+           document.getElementById("userlist").style.display = "block"
+         }
+         function hideUsers() {
+           document.getElementById("userlist").style.display = "none"
+         }
+       </script>
 
 
-    <input type="Submit" value="Save Changes to Task">
+      <input type="Submit" value="Save Changes to Task">
   </form>
 
 
