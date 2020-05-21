@@ -64,34 +64,37 @@ class TaskController < ApplicationController
  end
 
   post '/tasks' do
+    if logged_in?
+        # @user = current_user
 
-          @user = current_user
-          saved = 0
-
-          if params[:task][:no_subtask] == '1'
-            #if there is a checkbox for no subtasks, make subtask the same as task
-            if params[:users] == nil || !params[:users]
-              flash.next[:error] = "You need to have at least one person assigned"
-              erb :"/tasks/new"
-            else
-              @task = Task.create(params['task'])
-              @subtask = Subtask.create(params['task'])
-              @subtask.task = @task
-              @subtask.user_ids = params[:users]
-
-              if @subtask.save then saved = 1 end
-            end
-
+        if params[:task][:no_subtask] == '1'
+          #if there is a checkbox for no subtasks, make subtask the same as task
+          if params[:users] == nil || !params[:users]
+            flash.next[:error] = "You need to have at least one person assigned"
+            erb :"/tasks/new"
           else
             @task = Task.create(params['task'])
-            saved = 1
+            @subtask = Subtask.create(params['task'])
+            @subtask.task = @task
+            @subtask.user_ids = params[:users]
+
+            if @subtask.save then saved = true end
           end
 
-          if saved == 1
-            redirect to "/tasks/#{@task.id}"
-          else
-            redirect to "/tasks/new"
-          end
+        else
+          @task = Task.create(params['task'])
+          saved = true
+        end
+
+        if saved ||= false
+          redirect to "/tasks/#{@task.id}"
+        else
+          flash.next[:error] = "Something went wrong with your save, please check your inputs"
+          redirect to "/tasks/new"
+        end
+    else
+      erb :'/user/login'
+    end
 
   end #end of post /task
 
