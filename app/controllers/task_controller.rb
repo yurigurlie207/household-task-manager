@@ -34,14 +34,8 @@ class TaskController < ApplicationController
       @user = User.find_by_id(session[:user_id])
       @no_subtask = @task.no_subtask
       @subtasks = Subtask.where(task_id: params[:id])
+      @can_edit = can_edit?(@subtasks)
 
-      @subtasks.each do |subtask|
-        subtask.users.each do |user|
-            if session[:user_id] == user.id
-                @can_edit = true
-             end
-          end
-      end
        erb :'tasks/show'
      else
        erb :'/user/login'

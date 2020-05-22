@@ -1,16 +1,26 @@
 class SubtaskController < ApplicationController
 
   get '/tasks/:id/subtasks/new' do
-    @user = current_user
-    @task = Task.find_by_id(params[:id])
-    erb :'/tasks/subtasks/new'
+    if logged_in?
+      @user = current_user
+      @task = Task.find_by_id(params[:id])
+      erb :'/tasks/subtasks/new'
+    else
+      erb :'/user/login'
+    end
   end
 
   get '/tasks/:id/subtasks/:sid' do
-    @task = Task.find_by_id(params[:id])
-    @subtask = Subtask.find_by_id(params[:sid])
-    @user = User.find_by_id(session[:user_id])
-    erb :'/tasks/subtasks/show'
+    if logged_in?
+      @task = Task.find_by_id(params[:id])
+      @subtasks = Subtask.where(params[:sid])
+      @subtask = @subtasks.first
+      @user = User.find_by_id(session[:user_id])
+      @can_edit = can_edit?(@subtasks)
+      erb :'/tasks/subtasks/show'
+    else
+      erb :'/user/login'
+    end
   end
 
   get '/tasks/:id/subtasks/:sid/edit' do

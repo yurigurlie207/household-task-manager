@@ -34,7 +34,7 @@
    <%= @add_link = '<a href="' + "../tasks/#{@task.id}/subtasks/new" + '">' + "Add New Subtask" + '</a>' %><br>
   <% end %>
 
-   <% if @can_edit ||= false %>
+   <% if @can_edit %>
      <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/edit" + '">' %><button type="submit">Edit Task</button></form>
      <%= @form_open = '<form style="display:inline;" action="' + "../tasks/#{@task.id}/delete"  + '" method="POST"' + '>' %>
        <input id="hidden" type="hidden" name="_method" value="DELETE">

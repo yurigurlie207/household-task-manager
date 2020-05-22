@@ -1,6 +1,4 @@
-
-
- <h1>Task Name:  </h1>
+<h1>Task Name:  </h1>
     <%= @add_link = '<a href="' + "../../#{@task.id}" + '">' + "#{@task.title}" + '</a>' %>
     :: <%= @task.complete ? "Complete" : "Incomplete" %>
  <h1> Subtask Name:  </h1>
@@ -22,14 +20,9 @@
  </div>
 
  <div>
-   <% can_edit = 0 %>
-   <% @subtask.users.each do |user| %>
-       <% if session[:user_id] == user.id %>
-         <% can_edit = 1 %>
-       <% end %>
-    <% end%>
 
-    <% if can_edit == 1 %>
+
+    <% if @can_edit %>
       <%= @form_open = '<form style="display:inline;" action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' %><button type="submit">Edit Subtask</button></form>
       <%= @form_open = '<form style="display:inline;" action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/delete"  + '" method="POST"' + '>' %>
         <input id="hidden" type="hidden" name="_method" value="DELETE">
