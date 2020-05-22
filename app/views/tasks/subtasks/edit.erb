@@ -63,7 +63,7 @@
     <label>Is Subtask Complete?</label><br>
 
 
-    <% if @subtask.complete == true %>
+    <% if @subtask.complete %>
     <!-- <input type="checkbox" name="subtask[complete]" value="1" id="subtask_complete" <%='checked' if @subtask.complete == true %>> -->
       <input type="radio" id="incomplete" name="subtask[complete]" value="0">
       <label for="male">Incomplete</label><br>
