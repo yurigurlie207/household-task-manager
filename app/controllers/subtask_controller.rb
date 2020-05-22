@@ -14,7 +14,7 @@ class SubtaskController < ApplicationController
     if logged_in?
       @task = Task.find_by_id(params[:id])
       @subtasks = Subtask.where(params[:sid])
-      @subtask = @subtasks.first
+      @subtask = Subtask.find_by_id(params[:sid])
       @user = User.find_by_id(session[:user_id])
       @can_edit = can_edit?(@subtasks)
       erb :'/tasks/subtasks/show'
@@ -23,39 +23,39 @@ class SubtaskController < ApplicationController
     end
   end
 
+  post '/tasks/:id/subtasks' do
+    if logged_in?
+      @user = current_user
+      @task = Task.find_by_id(params[:id])
+
+        if !params[:users]
+          flash.next[:error] = "You need to have at least one person assigned"
+          erb :"/tasks/#{@task.id}/subtasks/new"
+        else
+          @subtask = Subtask.create(params['subtask'])
+          @subtask.complete ||= false
+          @subtask.task = @task
+          @subtask.user_ids = params[:users]
+
+          @subtask.save ? saved = true : flash.next[:error] = "There was an issue savings your subtask"
+        end
+
+      if saved ||= false
+        redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
+      else
+        redirect to "/tasks/#{@task.id}/subtasks/new"
+      end
+    else
+      erb :'/user/login'
+    end
+
+  end
+
   get '/tasks/:id/subtasks/:sid/edit' do
     @user = current_user
     @task = Task.find_by_id(params[:id])
     @subtask = Subtask.find_by_id(params[:sid])
     erb :'/tasks/subtasks/edit'
-  end
-
-  post '/tasks/:id/subtasks' do
-
-    @user = current_user
-    saved = 0
-    @task = Task.find_by_id(params[:id])
-
-      if !params[:users]
-        flash.next[:error] = "You need to have at least one person assigned"
-        erb :"/tasks/#{@task.id}/subtasks/new"
-      else
-
-        @subtask = Subtask.create(params['subtask'])
-        @subtask.complete = false
-        @subtask.task = @task
-        @subtask.user_ids = params[:users]
-
-        if @subtask.save then saved = 1 end
-      end
-
-    if saved == 1
-      # flash[:message] = "Successfully created task."
-      redirect to "/tasks/#{@task.id}/subtasks/#{@subtask.id}"
-    else
-      redirect to "/tasks/#{@task.id}/subtasks/new"
-    end
-
   end
 
   patch '/tasks/:id/subtasks/:sid' do
@@ -113,9 +113,8 @@ class SubtaskController < ApplicationController
       redirect to "/user/userhome"
     else
       redirect to "/tasks/#{@task.id}"
-   end
-
- end
+    end
+  end
 
 
 end

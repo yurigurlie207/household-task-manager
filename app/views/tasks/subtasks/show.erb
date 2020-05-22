@@ -20,8 +20,6 @@
  </div>
 
  <div>
-
-
     <% if @can_edit %>
       <%= @form_open = '<form style="display:inline;" action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/edit" + '">' %><button type="submit">Edit Subtask</button></form>
       <%= @form_open = '<form style="display:inline;" action="' + "../../#{@task.id}/subtasks/#{@subtask.id}/delete"  + '" method="POST"' + '>' %>

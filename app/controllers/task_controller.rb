@@ -42,7 +42,6 @@ class TaskController < ApplicationController
      end
    end
 
-
    get '/tasks/:id/edit' do
      if logged_in?
        @user = current_user
@@ -73,7 +72,7 @@ class TaskController < ApplicationController
             @subtask.task = @task
             @subtask.user_ids = params[:users]
 
-            @subtask.save ? saved = true : flash.next[:error] = "You need to have at least one person assigned"
+            @subtask.save ? saved = true : flash.next[:error] = "There was an issue saving your task"
           end
 
         else
