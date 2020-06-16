@@ -104,18 +104,17 @@ class TaskController < ApplicationController
       elsif
         params[:task][:no_subtask] == '1' && @orig_nosub
         #if there is a checkbox for no subtasks, make subtask the same as task
-        @subtask = Subtask.where(task_id: params[:id]).first
+        @subtask = @task.subtasks.first
         @subtask.update(params['task'])
         @subtask.user_ids = params[:users]
       elsif params[:task][:no_subtask] == '0' && @orig_nosub
         #delete single subtask
-        @subtask = Subtask.where(task_id: @task.id).first
-        @usertasks = UserTask.where(subtask_id: @subtask.id)
+        @subtask = @task.subtasks.first
+        @usertasks = @subtask.user_tasks
+        
         @subtask.delete
+        @usertasks.each(&:destroy)
 
-        @usertasks.each do |usertask|
-          usertask.delete
-        end
       else #if orig no sub is false, and params no subtask is true
         @subtask = Subtask.create(params['task'])
         @subtask.task = @task
