@@ -21,7 +21,6 @@ class UserController < ApplicationController
     end
   end
 
-
   get '/user/userhome' do
     if !logged_in?
       erb :'/user/login'
@@ -62,7 +61,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       erb :'/user/edit'
     end
   end
@@ -71,7 +70,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       @user.update(params['user'])
       redirect to "/user/#{@user.id}"
     end
@@ -81,7 +80,7 @@ class UserController < ApplicationController
      if !logged_in?
        erb :'/user/login'
     else
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       @user.delete
       redirect to '/user/signup'
     end
@@ -100,6 +99,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
      else
+       #This is really a route feature for debugging, so current user helper not used
         @user = User.find_by_id(params[:id])
         erb :'/user/profile'
     end
