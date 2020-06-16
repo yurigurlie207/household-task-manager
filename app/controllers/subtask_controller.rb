@@ -12,9 +12,10 @@ class SubtaskController < ApplicationController
 
   get '/tasks/:id/subtasks/:sid' do
     if logged_in?
-      @task = Task.find_by_id(params[:id])
-      @subtasks = Subtask.where(params[:sid])
       @subtask = Subtask.find_by_id(params[:sid])
+      @task = @subtask.task
+      @subtasks = @task.subtasks
+
       @user = current_user
       @can_edit = can_edit?(@subtasks)
       erb :'/tasks/subtasks/show'
@@ -54,8 +55,8 @@ class SubtaskController < ApplicationController
   get '/tasks/:id/subtasks/:sid/edit' do
       if logged_in?
         @user = current_user
-        @task = Task.find_by_id(params[:id])
         @subtask = Subtask.find_by_id(params[:sid])
+        @task = @subtask.task
         erb :'/tasks/subtasks/edit'
       else
         erb :'/user/login'
@@ -65,8 +66,8 @@ class SubtaskController < ApplicationController
   patch '/tasks/:id/subtasks/:sid' do
     if logged_in?
       @user = current_user
-      @task = Task.find_by_id(params[:id])
       @subtask = Subtask.find_by_id(params[:sid])
+      @task = @subtask.task
 
       if !params[:users]
         flash.next[:error] = "You need to have at least one person assigned"
@@ -79,7 +80,7 @@ class SubtaskController < ApplicationController
       end
 
       #if all subtasks under task shows complete, then also mark task as complete
-      @subtasks = Subtask.where(task_id: params[:id])
+      @subtasks = @task.subtasks
       @subtasks.each do |subtask|
         if subtask.complete == false
           task_complete = false
@@ -103,8 +104,8 @@ class SubtaskController < ApplicationController
 
   delete '/tasks/:id/subtasks/:sid/delete' do
     if logged_in?
-      @task = Task.find_by_id(params[:id])
       @subtask = Subtask.find_by_id(params[:sid])
+      @task = @subtask.task
       @usertasks = @subtask.user_tasks
 
       @usertasks.each(&:destroy)
