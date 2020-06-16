@@ -130,17 +130,16 @@ class TaskController < ApplicationController
 
  delete '/tasks/:id/delete' do
     if logged_in?
-      @subtasks = Subtask.where(task_id: params[:id])
-
-      @subtasks.each do |subtask|
-        UserTask.where(subtask_id: subtask.id).each do |usertask|
-          usertask.delete
-        end
-      end
-
-      @subtasks.delete_all
 
       @task = Task.find_by_id(params[:id])
+      @subtasks = @task.subtasks
+
+      @subtasks.each do |subtask|
+        @subtask.user_tasks.each(&:destroy)
+      end
+
+      @subtasks.each(&:destroy)
+
       @task.delete
 
        redirect to "/user/userhome"
