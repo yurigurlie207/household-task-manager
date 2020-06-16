@@ -33,7 +33,7 @@ class TaskController < ApplicationController
       @task = Task.find_by_id(params[:id])
       @user = current_user
       @no_subtask = @task.no_subtask
-      @subtasks = Subtask.where(task_id: params[:id])
+      @subtasks = @task.subtasks
       @can_edit = can_edit?(@subtasks)
 
        erb :'tasks/show'
@@ -49,7 +49,7 @@ class TaskController < ApplicationController
        @no_subtask = @task.no_subtask
 
        if @no_subtask
-            @subtask = Subtask.where(task_id: params[:id]).first
+            @subtask = @task.subtasks.first
        end
 
        erb :'/tasks/edit'
@@ -111,7 +111,7 @@ class TaskController < ApplicationController
         #delete single subtask
         @subtask = @task.subtasks.first
         @usertasks = @subtask.user_tasks
-        
+
         @subtask.delete
         @usertasks.each(&:destroy)
 
