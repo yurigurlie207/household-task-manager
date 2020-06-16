@@ -15,7 +15,7 @@ class SubtaskController < ApplicationController
       @task = Task.find_by_id(params[:id])
       @subtasks = Subtask.where(params[:sid])
       @subtask = Subtask.find_by_id(params[:sid])
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       @can_edit = can_edit?(@subtasks)
       erb :'/tasks/subtasks/show'
     else
