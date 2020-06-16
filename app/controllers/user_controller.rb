@@ -26,9 +26,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
-      #this will give all subtasks that has been assigned with to  logged in user
-      @usertasks = UserTask.where(user_id: session[:user_id])
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       erb :'/user/userhome'
     end
   end
