@@ -31,7 +31,7 @@ class TaskController < ApplicationController
   get '/tasks/:id' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       @no_subtask = @task.no_subtask
       @subtasks = Subtask.where(task_id: params[:id])
       @can_edit = can_edit?(@subtasks)
